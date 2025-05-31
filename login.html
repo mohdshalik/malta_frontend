@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Malta</title>
+    <link rel="stylesheet" href="astyle.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <input type="text" id="username" name="username" placeholder="Username" required>
+          <input type="password" id="password" name="password" placeholder="Password" required>
+          <button type="submit">Login</button>
+        </form>
+        <div id="error" style="color:red;"></div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        fetch('http://127.0.0.1:8001/api/token/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        })
+        .then(response => {
+          if (!response.ok) throw new Error("Invalid credentials");
+          return response.json();
+        })
+        .then(data => {
+          localStorage.setItem('access_token', data.access);
+          localStorage.setItem('refresh_token', data.refresh);
+          window.location.href = 'dashboard.html';  // Redirect after login
+        })
+        .catch(error => {
+          document.getElementById('error').textContent = error.message;
+        });
+      });
+    </script>
+  </body>
+</html>
