@@ -317,7 +317,7 @@
 
                       <div class="col-md-6">
                         <label>Hire Date</label>
-                        <input type="date" id="hire_date" class="form-control" placeholder="Enter hire date" required>
+                        <input type="date" id="hired_date" class="form-control" placeholder="Enter hire date" required>
                       </div>
 
                       <div class="col-md-6">
@@ -356,6 +356,14 @@
                         <div class="custom-sel">
                           <select class="form-control" id="company">
                             <option value="">-- Select Company --</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label>Select Department</label>
+                        <div class="custom-sel">
+                          <select class="form-control" id="emp_dept_id">
+                            <option value="">-- Select Department --</option>
                           </select>
                         </div>
                       </div>
@@ -424,13 +432,14 @@
             email: document.getElementById('email').value,
             phone_number: document.getElementById('phone_number').value,
             date_of_birth: document.getElementById('date_of_birth').value,
-            hire_date: document.getElementById('hire_date').value,
+            hired_date: document.getElementById('hired_date').value,
             social_security_no: document.getElementById('social_security_no').value,
             Tax_Registration_Number: document.getElementById('Tax_Registration_Number').value,
             Bank_Account_Number: document.getElementById('Bank_Account_Number').value,
             fss_status: document.getElementById('fss_status').value,
 
             company: document.getElementById('company').value,
+            emp_dept_id : document.getElementById('emp_dept_id').value,
             job_title: document.getElementById('job_title').value,
          
        
@@ -597,6 +606,38 @@
       });
     });
   </script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const token = localStorage.getItem('access_token');
+
+    fetch('http://127.0.0.1:8001/company/api/department/', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (!response.ok) throw new Error("Failed to fetch companies");
+      return response.json();
+    })
+    .then(companies => {
+      const companySelect = document.getElementById("emp_dept_id");
+
+      companies.forEach(emp_dept_id => {
+        const option = document.createElement("option");
+        option.value = emp_dept_id.id;
+        option.textContent = emp_dept_id.name;
+        companySelect.appendChild(option);
+      });
+    })
+    .catch(error => {
+      console.error("Error fetching company list:", error);
+    });
+  });
+</script>
   
 
   <script>
