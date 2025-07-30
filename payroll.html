@@ -13,6 +13,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Download pdf format -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 	<!-- My CSS -->
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="astyle.css">
@@ -323,10 +327,101 @@
 
     </div>
     
-    <div id="login">   
+    <div id="login"> 
+      
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="payrolrunTable">
+              <thead class="thead-dark">
+                <tr>
+                  <th>No</th>
+                  <th>Employee</th>
+                  <th>Payroll Name</th>
+                  <th>Month</th>
+                  <th>Year</th>
+                  <th>Payment Date</th>
+                  <th>Gross Salary</th>
+                  <th>Additions</th>
+                  <th>Deductions</th>
+                  <th>Net Salary</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="paySlipTableBody">
+                <!-- Payslip rows will be injected here -->
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </div>
        
     </div>
     
+
+      
+  <!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-10">
+            <h4>Payslip Details</h4>
+          </div>
+          <div class="col-md-2 text-right">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+        </div>
+        <hr>
+
+     
+
+        <!-- 🟡 You must include this -->
+        <div id="payslipContent">
+
+        <div id="payslipDetails">
+          
+          <!-- Payslip data will be injected here -->
+        </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-10"></div>
+
+          <div class="col-md-2">
+            <button type="button" class="btn btn-download btn-danger mt-3">Download</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  document.querySelector('.btn-download').addEventListener('click', function () {
+    const element = document.getElementById('payslipContent');
+
+    const opt = {
+      margin:       0.5,
+      filename:     'payslip.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save();
+  });
+</script>
+
+
+
   </div><!-- tab-content -->
 
 
@@ -624,6 +719,203 @@ $('.tab a').on('click', function (e) {
   
 
 
+    <!-- get payslip in table view -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const token = localStorage.getItem('access_token');
+    
+        fetch('http://127.0.0.1:8001/employee/payslip/', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error("Failed to fetch payslip data");
+          return response.json();
+        })
+        .then(payslips => {
+          const tableBody = document.getElementById("paySlipTableBody");
+          tableBody.innerHTML = ''; // Clear existing content
+    
+          payslips.forEach((item, index) => {
+            const payroll = item.payroll_run;
+            const monthNames = [
+              '', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+            ];
+    
+            const row = `
+  <tr class="payslip-row" data-id="${item.id}">
+    <td>${index + 1}</td>
+    <td>${item.employee}</td>
+    <td>${payroll?.name || '-'}</td>
+    <td>${monthNames[payroll?.month] || '-'}</td>
+    <td>${payroll?.year || '-'}</td>
+    <td>${payroll?.payment_date || '-'}</td>
+    <td>${item.gross_salary}</td>
+    <td>${item.total_additions}</td>
+    <td>${item.total_deductions}</td>
+    <td>${item.net_salary}</td>
+    <td>${item.status}</td>
+  </tr>
+`;
+
+            tableBody.insertAdjacentHTML('beforeend', row);
+          });
+        })
+        .catch(error => {
+          console.error("Error fetching payslip data:", error);
+        });
+      });
+
+
+
+
+      
+    </script>
+    
+
+    <script>
+      // Event delegation to handle click on dynamically generated rows
+document.addEventListener("click", function (e) {
+  if (e.target.closest(".payslip-row")) {
+    const row = e.target.closest(".payslip-row");
+    const payslipId = row.getAttribute("data-id");
+    openPayslipModal(payslipId);
+  }
+});
+
+function openPayslipModal(payslipId) {
+  const token = localStorage.getItem('access_token');
+
+  fetch(`http://127.0.0.1:8001/employee/payslip/${payslipId}/`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => {
+      if (!response.ok) throw new Error("Failed to fetch payslip details");
+      return response.json();
+    })
+    .then(payslip => {
+      // Populate modal content
+      const payroll = payslip.payroll_run;
+      const html = `
+  <style>
+    .payslip-box {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+    }
+    .payslip-title {
+      color: #8B0000;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .section-title {
+      font-weight: bold;
+      background-color: #8B0000;
+      color: white;
+      padding: 5px;
+      margin-top: 20px;
+    }
+    .bordered {
+      border: 1px solid #000;
+      padding: 5px;
+    }
+    .row-flex {
+      display: flex;
+      justify-content: space-between;
+    }
+    .payslip-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    .payslip-table td, .payslip-table th {
+      border: 1px solid #000;
+      padding: 6px;
+    }
+    .payslip-table th {
+      background-color: #eee;
+    }
+  </style>
+
+  <div class="payslip-box">
+    <div class="row-flex">
+      <div><span class="payslip-title">Pay Slip</span></div>
+      <div><strong>Month:</strong> ${payroll?.name}-${payroll?.year}</div>
+    </div>
+    <div class="row-flex">
+      <div><strong>From:</strong> 01-${payroll?.name}-${payroll?.year}</div>
+      <div><strong>To:</strong> ${payroll?.payment_date}</div>
+    </div>
+
+    <div class="section-title">Employee Details</div>
+    <div class="bordered" style="width: 100%;">
+      <strong>Employee's Name:</strong> ${payslip.employee}<br>
+      <strong>Total Working Days:</strong> ${payslip.total_working_days}
+    </div>
+
+    <div class="section-title">Earnings & Deductions</div>
+    <table class="payslip-table">
+      <tr>
+        <th>#</th>
+        <th>Component</th>
+        <th>Amount (€)</th>
+      </tr>
+      ${
+        payslip.components && payslip.components.length > 0
+          ? payslip.components.map((comp, idx) => `
+            <tr>
+              <td>${idx + 1}</td>
+              <td>Component ${comp.component}</td>
+              <td>${comp.amount}</td>
+            </tr>
+          `).join('')
+          : '<tr><td colspan="3">No components available</td></tr>'
+      }
+
+      <tr>
+        <td colspan="2"><strong>Total Additions</strong></td>
+        <td><strong>€${payslip.total_additions}</strong></td>
+      </tr>
+      <tr>
+        <td colspan="2"><strong>Total Deductions</strong></td>
+        <td><strong>€${payslip.total_deductions}</strong></td>
+      </tr>
+      <tr>
+        <td colspan="2"><strong>Gross Salary</strong></td>
+        <td><strong>€${payslip.gross_salary}</strong></td>
+      </tr>
+      <tr>
+        <td colspan="2"><strong>Net Salary</strong></td>
+        <td><strong>€${payslip.net_salary}</strong></td>
+      </tr>
+    </table>
+  </div>
+`;
+
+
+
+      document.getElementById("payslipDetails").innerHTML = html;
+
+      // Show modal
+      $('#myModal').modal('show');
+    })
+    .catch(error => {
+      console.error("Error loading payslip details:", error);
+      alert("Failed to load payslip details.");
+    });
+}
+
+    </script>
+    
+
      <!-- post Payrol run component -->
 
      <script>
@@ -648,6 +940,7 @@ $('.tab a').on('click', function (e) {
               'Authorization': `Bearer ${token}`  // Remove this line if your API doesn't require login
             },
             body: JSON.stringify(data)
+
           })
           .then(response => {
             if (!response.ok) throw new Error("Failed to payroll Run.");
@@ -665,6 +958,15 @@ $('.tab a').on('click', function (e) {
         });
       </script>
     
+
+    <script>
+      const detailDiv = document.getElementById("payslipDetails");
+if (!detailDiv) {
+  console.error("❌ #payslipDetails element not found in DOM.");
+  return;
+}
+detailDiv.innerHTML = html;
+    </script>
 
 
 	<script src="script.js"></script>
