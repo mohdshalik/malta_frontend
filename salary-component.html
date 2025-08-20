@@ -494,7 +494,7 @@
 
 };
 
-    fetch('/employee/employeesalary/', {
+    fetch('http://167.86.74.89/employee/employeesalary/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -523,7 +523,7 @@
     document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem('access_token');
 
-    fetch('/employee/employeesalary/', {
+    fetch('http://167.86.74.89/employee/employeesalary/', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -659,7 +659,7 @@ $('.tab a').on('click', function (e) {
       description: document.getElementById('description').value
     };
       
-          fetch('/employee/salarycomponent/', {
+          fetch('http://167.86.74.89/employee/salarycomponent/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -686,7 +686,7 @@ $('.tab a').on('click', function (e) {
         document.addEventListener("DOMContentLoaded", function () {
           const token = localStorage.getItem('access_token');
       
-          fetch('/employee/salarycomponent/', {
+          fetch('http://167.86.74.89/employee/salarycomponent/', {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -740,7 +740,7 @@ $('.tab a').on('click', function (e) {
       });
     
       // Fetch companies and populate list
-      fetch('/company/api/company/', {
+      fetch('http://167.86.74.89/company/api/company/', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,

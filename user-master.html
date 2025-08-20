@@ -229,7 +229,7 @@
                         document.addEventListener("DOMContentLoaded", function () {
                           const token = localStorage.getItem('access_token');
                     
-                          fetch('/company/api/User/', {
+                          fetch('http://167.86.74.89/company/api/User/', {
                             method: 'GET',
                             headers: {
                               'Authorization': `Bearer ${token}`,
@@ -393,7 +393,7 @@
             password: document.getElementById('password').value,
           };
       
-          fetch('/company/api/User/', {
+          fetch('http://167.86.74.89/company/api/User/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

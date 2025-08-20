@@ -320,7 +320,7 @@
 
           };
       
-          fetch('/employee/Role/', {
+          fetch('http://167.86.74.89/employee/Role/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -347,7 +347,7 @@
         document.addEventListener("DOMContentLoaded", function () {
           const token = localStorage.getItem('access_token');
       
-          fetch('/employee/Role/', {
+          fetch('http://167.86.74.89/employee/Role/', {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${token}`,

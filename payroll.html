@@ -449,7 +449,7 @@
 
 };
 
-    fetch('/employee/employeesalary/', {
+    fetch('http://167.86.74.89/employee/employeesalary/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -480,7 +480,7 @@
     document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem('access_token');
 
-    fetch('/employee/employeesalary/', {
+    fetch('http://167.86.74.89/employee/employeesalary/', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -599,7 +599,7 @@ $('.tab a').on('click', function (e) {
       description: document.getElementById('description').value
     };
       
-          fetch('/employee/salarycomponent/', {
+          fetch('http://167.86.74.89/employee/salarycomponent/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -649,7 +649,7 @@ $('.tab a').on('click', function (e) {
           document.addEventListener("DOMContentLoaded", function () {
       const token = localStorage.getItem('access_token');
   
-      fetch('/company/api/company/', {
+      fetch('http://167.86.74.89/company/api/company/', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -685,7 +685,7 @@ $('.tab a').on('click', function (e) {
     document.addEventListener("DOMContentLoaded", function () {
       const token = localStorage.getItem('access_token');
   
-      fetch('/employee/PayrollRun/', {
+      fetch('http://167.86.74.89/employee/PayrollRun/', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -730,7 +730,7 @@ $('.tab a').on('click', function (e) {
       document.addEventListener("DOMContentLoaded", function () {
         const token = localStorage.getItem('access_token');
     
-        fetch('/employee/payslip/', {
+        fetch('http://167.86.74.89/employee/payslip/', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -798,7 +798,7 @@ document.addEventListener("click", function (e) {
 function openPayslipModal(payslipId) {
   const token = localStorage.getItem('access_token');
 
-  fetch(`/employee/payslip/${payslipId}/`, {
+  fetch(`http://167.86.74.89/employee/payslip/${payslipId}/`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`,
@@ -1036,7 +1036,7 @@ ${
       branch: document.getElementById('branch').value
     };
       
-          fetch('http://127.0.0.1:8001/employee/PayrollRun/', {
+          fetch('http://167.86.74.89/employee/PayrollRun/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
