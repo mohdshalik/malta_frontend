@@ -47,18 +47,18 @@
 					<span class="text">Department</span>
 				</a>
 			</li>
-            <li class="active">
+            <li >
 				<a href="role.html">
 					<i class='bx bxs-group bx-sm' ></i>
 					<span class="text">Designation Master</span>
 				</a>
 			</li>
-      <li >
-        <a href="category.html">
-          <i class='bx bxs-group bx-sm' ></i>
-          <span class="text">Category Master</span>
-        </a>
-      </li>
+                  <li class="active">
+				<a href="category.html">
+					<i class='bx bxs-group bx-sm' ></i>
+					<span class="text">Category Master</span>
+				</a>
+			</li>
 			<li>
 				<a href="employee-master.html">
 					<i class='bx bxs-message-dots bx-sm' ></i>
@@ -220,7 +220,7 @@
           <thead class="thead-dark">
             <tr>
               <th>No</th>
-              <th>Job Title</th>
+              <th>Category Name</th>
             </tr>
           </thead>
           <tbody id="rolesTableBody">
@@ -251,7 +251,7 @@
 
                 <div class="row">
                     <div class="col-md-10">
-                        <h4 class="modal-title" style="text-align: left;">Create Job Role </h4><hr>
+                        <h4 class="modal-title" style="text-align: left;">Create Category </h4><hr>
 
                     </div>
                     <div class="col-md-2">
@@ -263,8 +263,8 @@
                 <form id="userForm">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>Job Tittle Name</label>
-                        <input type="text" id="role_name" class="form-control" placeholder="Enter  Joble title name" required>
+                        <label>Category Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter  Category name" required>
                       </div>
                    
                       
@@ -315,12 +315,12 @@
           const token = localStorage.getItem('access_token'); // If your API requires authentication
       
           const data = {
-            role_name: document.getElementById('role_name').value,
+            name: document.getElementById('name').value,
        
 
           };
       
-          fetch('http://127.0.0.1:8001/employee/Role/', {
+          fetch('http://127.0.0.1:8001/employee/category/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -329,11 +329,11 @@
             body: JSON.stringify(data)
           })
           .then(response => {
-            if (!response.ok) throw new Error("Failed to register user.");
+            if (!response.ok) throw new Error("Failed to register category.");
             return response.json();
           })
           .then(result => {
-            alert('Department registered successfully!');
+            alert('category registered successfully!');
             document.getElementById('userForm').reset();
           })
           .catch(error => {
@@ -347,7 +347,7 @@
         document.addEventListener("DOMContentLoaded", function () {
           const token = localStorage.getItem('access_token');
       
-          fetch('http://127.0.0.1:8001/employee/Role/', {
+          fetch('http://127.0.0.1:8001/employee/category/', {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -366,7 +366,7 @@
               const row = `
                 <tr>
                   <td>${index + 1}</td>
-                  <td>${role.role_name || 'N/A'}</td>
+                  <td>${role.name || 'N/A'}</td>
                 </tr>
               `;
               tableBody.insertAdjacentHTML('beforeend', row);

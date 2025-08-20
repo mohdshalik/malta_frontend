@@ -62,6 +62,12 @@
 					<span class="text">Designation Master</span>
 				</a>
 			</li>
+      <li >
+        <a href="category.html">
+          <i class='bx bxs-group bx-sm' ></i>
+          <span class="text">Category Master</span>
+        </a>
+      </li>
 			<li>
 				<a href="employee-master.html">
 					<i class='bx bxs-message-dots bx-sm' ></i>
@@ -114,12 +120,12 @@
 			</li>
 		</ul>
 		<ul class="side-menu bottom">
-			<li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog bx-sm bx-spin-hover' ></i>
 					<span class="text">Settings</span>
 				</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="#" class="logout" id="logoutBtn">
 					<i class='bx bx-power-off bx-sm bx-burst-hover' ></i>
@@ -308,9 +314,9 @@
                 <tr>
                   <th>No</th>
                   <th>Name</th>
-                  <th>Start date</th>
+                  <th>Year</th>
 
-                  <th>End date</th>
+                  <th>Month</th>
                   <th>Payment date</th>
                   <th>Branch</th>
                   <th>Status</th>
@@ -699,8 +705,8 @@ $('.tab a').on('click', function (e) {
             <tr>
               <td>${index + 1}</td>
               <td>${role.name || 'N/A'}</td>
-              <td>${role.start_date || 'N/A'}</td>
-              <td>${role.end_date || 'N/A'}</td>
+              <td>${role.year || 'N/A'}</td>
+              <td>${role.month || 'N/A'}</td>
               <td>${role.payment_date || 'N/A'}</td>
               <td>${role.branch || 'N/A'}</td>
               <td>${role.status || 'N/A'}</td>
@@ -777,6 +783,8 @@ $('.tab a').on('click', function (e) {
     </script>
     
 
+    <!-- payslip detalis script here -->
+
     <script>
       // Event delegation to handle click on dynamically generated rows
 document.addEventListener("click", function (e) {
@@ -801,112 +809,207 @@ function openPayslipModal(payslipId) {
       if (!response.ok) throw new Error("Failed to fetch payslip details");
       return response.json();
     })
-    .then(payslip => {
-      // Populate modal content
-      const payroll = payslip.payroll_run;
-      const html = `
-  <style>
-    .payslip-box {
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      color: #000;
-    }
-    .payslip-title {
-      color: #8B0000;
-      font-weight: bold;
-      font-size: 18px;
-    }
-    .section-title {
-      font-weight: bold;
-      background-color: #8B0000;
-      color: white;
-      padding: 5px;
-      margin-top: 20px;
-    }
-    .bordered {
-      border: 1px solid #000;
-      padding: 5px;
-    }
-    .row-flex {
-      display: flex;
-      justify-content: space-between;
-    }
-    .payslip-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-    .payslip-table td, .payslip-table th {
-      border: 1px solid #000;
-      padding: 6px;
-    }
-    .payslip-table th {
-      background-color: #eee;
-    }
-  </style>
+   .then(payslip => {
+  const payroll = payslip.payroll_run;
+  const emp = payslip.employee;
+  const company = emp.company;
 
-  <div class="payslip-box">
+  const html = `
+<style>
+  .payslip-box {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+  }
+  .payslip-title {
+    color: #8B0000;
+    font-weight: bold;
+    font-size: 22px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  .main-heading {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+  }
+  .row-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .bordered {
+    border: 1px solid #000;
+    padding: 5px;
+    margin-bottom: 10px;
+    white-space: pre-line;
+        
+
+  }
+  .half {
+    width: 48%;
+  }
+  .payslip-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  .payslip-table td, .payslip-table th {
+    border: 1px solid #000;
+    padding: 6px;
+  }
+  .payslip-table th {
+    background-color: #eee;
+  }
+  .section-label {
+    margin-top: 20px;
+    border-top: 2px solid #8B0000;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #8B0000;
+  }
+
+ .row-flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* align left */
+  margin-bottom: 6px;
+}
+.bordered {
+  border: 1px solid #000;
+  padding: 4px 8px;
+  text-align: left;
+  display: inline-block;
+}
+
+</style>
+
+<div class="payslip-box">
+  <div class="payslip-title">Pay Slip</div>
+
+  <div class="row">
+
+    <div class="col-md-6">
+        <div class="main-heading">MEETHAL VENTURES LTD</div>
+
+      </div>
+
+       <div class="col-md-6">
+        
+  <div >
+    <div><strong>Month:</strong> ${payroll.name}-${payroll.year}</div>
     <div class="row-flex">
-      <div><span class="payslip-title">Pay Slip</span></div>
-      <div><strong>Month:</strong> ${payroll?.name}-${payroll?.year}</div>
+    <div><strong>From:</strong> 01-${payroll.name}-${payroll.year}</div>
+    <div><strong>To:</strong> ${payroll.payment_date}</div>
     </div>
-    <div class="row-flex">
-      <div><strong>From:</strong> 01-${payroll?.name}-${payroll?.year}</div>
-      <div><strong>To:</strong> ${payroll?.payment_date}</div>
-    </div>
-
-    <div class="section-title">Employee Details</div>
-    <div class="bordered" style="width: 100%;">
-      <strong>Employee's Name:</strong> ${payslip.employee}<br>
-      <strong>Total Working Days:</strong> ${payslip.total_working_days}
-    </div>
-
-    <div class="section-title">Earnings & Deductions</div>
-    <table class="payslip-table">
-      <tr>
-        <th>#</th>
-        <th>Component</th>
-        <th>Amount (€)</th>
-      </tr>
-      ${
-        payslip.components && payslip.components.length > 0
-          ? payslip.components.map((comp, idx) => `
-            <tr>
-              <td>${idx + 1}</td>
-              <td>Component ${comp.component}</td>
-              <td>${comp.amount}</td>
-            </tr>
-          `).join('')
-          : '<tr><td colspan="3">No components available</td></tr>'
-      }
-
-      <tr>
-        <td colspan="2"><strong>Total Additions</strong></td>
-        <td><strong>€${payslip.total_additions}</strong></td>
-      </tr>
-      <tr>
-        <td colspan="2"><strong>Total Deductions</strong></td>
-        <td><strong>€${payslip.total_deductions}</strong></td>
-      </tr>
-      <tr>
-        <td colspan="2"><strong>Gross Salary</strong></td>
-        <td><strong>€${payslip.gross_salary}</strong></td>
-      </tr>
-      <tr>
-        <td colspan="2"><strong>Net Salary</strong></td>
-        <td><strong>€${payslip.net_salary}</strong></td>
-      </tr>
-    </table>
   </div>
+      </div>
+    </div><hr style="color:red;border:solid 1.5px #8B0000">
+
+
+
+ <!-- Employer Details -->
+<div class="row-flex" style="margin-bottom:0px">
+  <div style="width: 25%;color:#8B0000;">Employer’s Name:</div>
+  <div class="bordered" style="width: 35%;margin-bottom:0px"><strong>${company.name?.toUpperCase()}</strong></div>
+</div>
+
+<div class="row-flex" style="margin-bottom:0px">
+  <div style="width: 25%;color:#8B0000">Address:</div>
+  <div class="bordered" style="width: 35%; margin-bottom:0px"><strong>${company.address}</strong></div>
+</div>
+
+
+
+<!-- Employee Details -->
+<div class="row-flex mt-5" style="margin-bottom:0px">
+  <div style="width: 25%;color:#8B0000"">Employee’s Name:</div>
+  <div class="bordered" style="width: 35%;margin-bottom:0px"><strong>${emp.first_name?.toUpperCase()} ${emp.last_name?.toUpperCase()}</strong></div>
+</div>
+<div class="row-flex" style="margin-bottom:0px">
+  <div style="width: 25%;color:#8B0000"">Type of Employment:</div>
+  <div class="bordered" style="width: 35%;margin-bottom:0px"><strong>${emp.type_of_employment || '-'}</strong></div>
+</div>
+<div class="row-flex" style="margin-bottom:0px">
+  <div style="width: 25%;color:#8B0000"">ID No.:</div>
+  <div class="bordered" style="width: 35%;margin-bottom:0px">${emp.emp_code}</div>
+</div>
+<div class="row-flex" style="margin-bottom:0px">
+  <div style="width: 25%;color:#8B0000"">Social Security No.:</div>
+  <div class="bordered" style="width: 35%;margin-bottom:0px">${emp.social_security_no}</div>
+</div>
+<div class="row-flex" style="margin-bottom:0px">
+  <div style="width: 25%;color:#8B0000"">Category:</div>
+  <div class="bordered" style="width: 35%;margin-bottom:0px">${emp.category?.name || '-'}</div>
+</div>
+
+<div class="row-flex" style="margin-bottom:0px">
+  <div style="width: 25%;color:#8B0000"">Address:</div>
+  <div class="bordered" style="width: 35%;margin-bottom:0px">${emp.address || '-'}</div>
+</div>
+<hr style="color:red;border:solid 1.5px #8B0000">
+
+<!-- Earnings Section -->
+
+${
+  payslip.components && payslip.components.length > 0
+    ? (
+        // Split additions and deductions
+        (() => {
+          const additions = payslip.components.filter(c => c.component_type === "addition");
+          const deductions = payslip.components.filter(c => c.component_type === "deduction");
+
+          // Render additions
+          const additionHtml = additions.map(comp => `
+            <div class="row-flex" style="margin-bottom:0px">
+              <div style="width: 25%;color:#8B0000">${comp.component_name}</div>
+              <div class="bordered" style="width: 35%;margin-bottom:0px">€${comp.amount}</div>
+            </div>
+          `).join('');
+
+          // Render deductions
+          const deductionHtml = deductions.map(comp => `
+            <div class="row-flex" style="margin-bottom:0px">
+              <div style="width: 25%;color:#8B0000">${comp.component_name}</div>
+              <div class="bordered" style="width: 35%;margin-bottom:0px">€${comp.amount}</div>
+            </div>
+          `).join('');
+
+          // Return full block (additions -> gross -> deductions -> net)
+          return `
+            ${additionHtml}
+
+            <div class="row-flex mt-4">
+              <div style="width: 25%;color:#8B0000;text-align:center;"><strong>Gross Salary</strong></div>
+              <div class="bordered" style="width: 35%;"><strong>€${payslip.gross_salary}</strong></div>
+            </div>
+
+            ${deductionHtml}
+
+            <div class="row-flex mt-4">
+              <div style="width: 25%;color:#8B0000;text-align:center;"><strong>Net Salary</strong></div>
+              <div class="bordered" style="width: 35%; border-bottom:solid 3px;"><strong>€${payslip.net_salary}</strong></div>
+            </div>
+          `;
+        })()
+      )
+    : '<div class="row-flex"><div style="width: 25%;"><strong>Components</strong></div><div class="bordered" style="width: 35%;">No components available</div></div>'
+}
+    <hr style="color:red;border:solid 1.5px #8B0000">
+
+
+
+</div>
+
 `;
 
+  document.getElementById("payslipDetails").innerHTML = html;
+  $('#myModal').modal('show');
+})
 
-
-      document.getElementById("payslipDetails").innerHTML = html;
-
-      // Show modal
-      $('#myModal').modal('show');
-    })
     .catch(error => {
       console.error("Error loading payslip details:", error);
       alert("Failed to load payslip details.");
