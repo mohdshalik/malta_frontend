@@ -342,7 +342,7 @@
 
           };
       
-          fetch('http://127.0.0.1:8001/company/api/company/', {
+          fetch('/company/api/company/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -369,7 +369,7 @@
         document.addEventListener("DOMContentLoaded", function () {
           const token = localStorage.getItem('access_token');
       
-          fetch('http://127.0.0.1:8001/company/api/company/', {
+          fetch('/company/api/company/', {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${token}`,

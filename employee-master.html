@@ -477,7 +477,7 @@
 
           };
       
-          fetch('http://127.0.0.1:8001/employee/employee/', {
+          fetch('/employee/employee/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -507,7 +507,7 @@
         const token = localStorage.getItem('access_token');
         const tableBody = document.getElementById("rolesTableBody");
     
-        fetch('http://127.0.0.1:8001/employee/employee/', {
+        fetch('/employee/employee/', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -558,7 +558,7 @@
         const token = localStorage.getItem('access_token');
         if (!confirm("Are you sure you want to delete this employee?")) return;
     
-        fetch(`http://127.0.0.1:8001/employee/employee/${empId}/`, {
+        fetch(`/employee/employee/${empId}/`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -587,7 +587,7 @@
   function deleteEmployee(empId) {
     const token = localStorage.getItem('access_token');
 
-    fetch(`http://127.0.0.1:8001/employee/employee/${empId}/`, {
+    fetch(`/employee/employee/${empId}/`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -615,7 +615,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       const token = localStorage.getItem('access_token');
   
-      fetch('http://127.0.0.1:8001/company/api/company/', {
+      fetch('/company/api/company/', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -647,7 +647,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem('access_token');
 
-    fetch('http://127.0.0.1:8001/company/api/department/', {
+    fetch('/company/api/department/', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -679,7 +679,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       const token = localStorage.getItem('access_token');
   
-      fetch('http://127.0.0.1:8001/employee/Role/', {
+      fetch('/employee/Role/', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -711,7 +711,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       const token = localStorage.getItem('access_token');
   
-      fetch('http://127.0.0.1:8001/employee/category/', {
+      fetch('/employee/category/', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,

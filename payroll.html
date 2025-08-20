@@ -449,7 +449,7 @@
 
 };
 
-    fetch('http://127.0.0.1:8001/employee/employeesalary/', {
+    fetch('/employee/employeesalary/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -480,7 +480,7 @@
     document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem('access_token');
 
-    fetch('http://127.0.0.1:8001/employee/employeesalary/', {
+    fetch('/employee/employeesalary/', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -599,7 +599,7 @@ $('.tab a').on('click', function (e) {
       description: document.getElementById('description').value
     };
       
-          fetch('http://127.0.0.1:8001/employee/salarycomponent/', {
+          fetch('/employee/salarycomponent/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -649,7 +649,7 @@ $('.tab a').on('click', function (e) {
           document.addEventListener("DOMContentLoaded", function () {
       const token = localStorage.getItem('access_token');
   
-      fetch('http://127.0.0.1:8001/company/api/company/', {
+      fetch('/company/api/company/', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -685,7 +685,7 @@ $('.tab a').on('click', function (e) {
     document.addEventListener("DOMContentLoaded", function () {
       const token = localStorage.getItem('access_token');
   
-      fetch('http://127.0.0.1:8001/employee/PayrollRun/', {
+      fetch('/employee/PayrollRun/', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -730,7 +730,7 @@ $('.tab a').on('click', function (e) {
       document.addEventListener("DOMContentLoaded", function () {
         const token = localStorage.getItem('access_token');
     
-        fetch('http://127.0.0.1:8001/employee/payslip/', {
+        fetch('/employee/payslip/', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -798,7 +798,7 @@ document.addEventListener("click", function (e) {
 function openPayslipModal(payslipId) {
   const token = localStorage.getItem('access_token');
 
-  fetch(`http://127.0.0.1:8001/employee/payslip/${payslipId}/`, {
+  fetch(`/employee/payslip/${payslipId}/`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${token}`,
