@@ -55,7 +55,14 @@
 					<span class="text">Designation Master</span>
 				</a>
 			</li>
+      <li >
+        <a href="category.html">
+          <i class='bx bxs-group bx-sm' ></i>
+          <span class="text">Category Master</span>
+        </a>
+      </li>
 			<li>
+       
 				<a href="employee-master.html">
 					<i class='bx bxs-message-dots bx-sm' ></i>
 					<span class="text">Employee</span>
@@ -107,12 +114,12 @@
 			</li>
 		</ul>
 		<ul class="side-menu bottom">
-			<li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog bx-sm bx-spin-hover' ></i>
 					<span class="text">Settings</span>
 				</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="#" class="logout" id="logoutBtn">
 					<i class='bx bx-power-off bx-sm bx-burst-hover' ></i>
@@ -335,7 +342,7 @@
 
           };
       
-          fetch('http://127.0.0.1:8001/company/api/company/', {
+          fetch('http://167.86.74.89/company/api/company/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -362,7 +369,7 @@
         document.addEventListener("DOMContentLoaded", function () {
           const token = localStorage.getItem('access_token');
       
-          fetch('http://127.0.0.1:8001/company/api/company/', {
+          fetch('http://167.86.74.89/company/api/company/', {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${token}`,
