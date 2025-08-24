@@ -1,1089 +1,1055 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- Boxicons -->
-	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-	<link href='https://unpkg.com/boxicons@2.1.4/dist/boxicons.js' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href='https://unpkg.com/boxicons@2.1.4/dist/boxicons.js' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <!-- Download pdf format -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Download pdf format -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-	<!-- My CSS -->
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="astyle.css">
+  <!-- My CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="astyle.css">
 
-    <link rel="stylesheet" href="new.css">
-    <link rel="stylesheet" href="new.css">
-
-
-    <script src="ascript.js"></script>
+  <link rel="stylesheet" href="new.css">
+  <link rel="stylesheet" href="new.css">
 
 
-	<title>Dashboard</title>
+  <script src="ascript.js"></script>
+
+
+  <title>Dashboard</title>
 </head>
-<body>
-	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile  bx-lg'></i>
-			<span class="text">Company</span>
-		</a>
-		<ul class="side-menu top">
-			<li >
-				<a href="dashboard.html">
-					<i class='bx bxs-dashboard bx-sm' ></i>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
-			<li >
-				<a href="company-master.html">
-					<i class='bx bxs-shopping-bag-alt bx-sm' ></i>
-					<span class="text">Company</span>
-				</a>
-			</li>
-			<li>
-				<a href="department-master.html">
-					<i class='bx bxs-doughnut-chart bx-sm' ></i>
-					<span class="text">Department</span>
-				</a>
-			</li>
-            <li >
-				<a href="role.html">
-					<i class='bx bxs-group bx-sm' ></i>
-					<span class="text">Designation Master</span>
-				</a>
-			</li>
-			<li>
-				<a href="employee-master.html">
-					<i class='bx bxs-message-dots bx-sm' ></i>
-					<span class="text">Employee</span>
-				</a>
-			</li>
-			<li class="has-submenu" class="active">
-				<a href="#" class="submenu-toggle">
-				  <i class='bx bxs-group bx-sm'></i>
-				  <span class="text">Payroll Master</span>
-				  <i class='bx bx-chevron-down arrow '></i>
-				</a>
-				<ul class="submenu" style="display: none;">
-				  <li ><a href="salary-component.html">Salary Component</a></li>
-				  <li><a href="payroll.html">Payroll</a></li>
-				</ul>
-			  </li>
-			  
-			  <script>
-				document.addEventListener('DOMContentLoaded', function () {
-				  const submenuToggles = document.querySelectorAll('.submenu-toggle');
-			  
-				  submenuToggles.forEach(toggle => {
-					toggle.addEventListener('click', function (e) {
-					  e.preventDefault();
-			  
-					  const parentLi = this.closest('.has-submenu');
-					  const submenu = parentLi.querySelector('.submenu');
-					  const arrow = this.querySelector('.arrow');
-			  
-					  // Toggle visibility
-					  if (submenu.style.display === 'block') {
-						submenu.style.display = 'none';
-						arrow.style.transform = 'rotate(0deg)';
-					  } else {
-						submenu.style.display = 'block';
-						arrow.style.transform = 'rotate(180deg)';
-					  }
-					});
-				  });
-				});
-			  </script>
-			  
 
-            <li>
-				<a href="user-master.html">
-					<i class='bx bxs-group bx-sm' ></i>
-					<span class="text">User Master</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu bottom">
-			<li>
+<body>
+  <!-- SIDEBAR -->
+  <section id="sidebar">
+    <a href="#" class="brand">
+      <i class='bx bxs-smile  bx-lg'></i>
+      <span class="text">Company</span>
+    </a>
+    <ul class="side-menu top">
+      <li>
+        <a href="dashboard.html">
+          <i class='bx bxs-dashboard bx-sm'></i>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="company-master.html">
+          <i class='bx bxs-shopping-bag-alt bx-sm'></i>
+          <span class="text">Company</span>
+        </a>
+      </li>
+      <li>
+        <a href="department-master.html">
+          <i class='bx bxs-doughnut-chart bx-sm'></i>
+          <span class="text">Department</span>
+        </a>
+      </li>
+      <li>
+        <a href="role.html">
+          <i class='bx bxs-group bx-sm'></i>
+          <span class="text">Designation Master</span>
+        </a>
+      </li>
+      <li>
+        <a href="category.html">
+          <i class='bx bxs-group bx-sm'></i>
+          <span class="text">Category Master</span>
+        </a>
+      </li>
+      <li>
+        <a href="employee-master.html">
+          <i class='bx bxs-message-dots bx-sm'></i>
+          <span class="text">Employee</span>
+        </a>
+      </li>
+      <li class="has-submenu" class="active">
+        <a href="#" class="submenu-toggle">
+          <i class='bx bxs-group bx-sm'></i>
+          <span class="text">Payroll Master</span>
+          <i class='bx bx-chevron-down arrow '></i>
+        </a>
+        <ul class="submenu" style="display: none;">
+          <li><a href="salary-component.html">Salary Component</a></li>
+          <li><a href="payroll.html">Payroll</a></li>
+        </ul>
+      </li>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+          submenuToggles.forEach(toggle => {
+            toggle.addEventListener('click', function (e) {
+              e.preventDefault();
+
+              const parentLi = this.closest('.has-submenu');
+              const submenu = parentLi.querySelector('.submenu');
+              const arrow = this.querySelector('.arrow');
+
+              // Toggle visibility
+              if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+              } else {
+                submenu.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+              }
+            });
+          });
+        });
+      </script>
+
+
+      <li>
+        <a href="user-master.html">
+          <i class='bx bxs-group bx-sm'></i>
+          <span class="text">User Master</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="side-menu bottom">
+      <!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog bx-sm bx-spin-hover' ></i>
 					<span class="text">Settings</span>
 				</a>
-			</li>
-			<li>
-				<a href="#" class="logout" id="logoutBtn">
-					<i class='bx bx-power-off bx-sm bx-burst-hover' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
-	</section>
-	<!-- SIDEBAR -->
+			</li> -->
+      <li id="logoutBtn">
+        <a >
+          <i class='bx bx-power-off bx-sm bx-burst-hover'></i>
+          <span class="text">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!-- SIDEBAR -->
 
 
 
-	<!-- CONTENT -->
-	<section id="content">
-		<!-- NAVBAR -->
-<nav>
-    <i class='bx bx-menu bx-sm' ></i>
-    <a href="#" class="nav-link">Categories</a>
-    <form action="#">
+  <!-- CONTENT -->
+  <section id="content">
+    <!-- NAVBAR -->
+    <nav>
+      <i class='bx bx-menu bx-sm'></i>
+      <a href="#" class="nav-link">Categories</a>
+      <form action="#">
         <div class="form-input">
-            <input type="search" placeholder="Search...">
-            <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+          <input type="search" placeholder="Search...">
+          <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
         </div>
-    </form>
-    <input type="checkbox" class="checkbox" id="switch-mode" hidden />
-    <label class="swith-lm" for="switch-mode">
+      </form>
+      <input type="checkbox" class="checkbox" id="switch-mode" hidden />
+      <label class="swith-lm" for="switch-mode">
         <i class="bx bxs-moon"></i>
         <i class="bx bx-sun"></i>
         <div class="ball"></div>
-    </label>
+      </label>
 
-    <!-- Notification Bell -->
-    <a href="#" class="notification" id="notificationIcon">
-        <i class='bx bxs-bell bx-tada-hover' ></i>
+      <!-- Notification Bell -->
+      <a href="#" class="notification" id="notificationIcon">
+        <i class='bx bxs-bell bx-tada-hover'></i>
         <span class="num">8</span>
-    </a>
-    <div class="notification-menu" id="notificationMenu">
+      </a>
+      <div class="notification-menu" id="notificationMenu">
         <ul>
-            <li>New message from John</li>
-            <li>Your order has been shipped</li>
-            <li>New comment on your post</li>
-            <li>Update available for your app</li>
-            <li>Reminder: Meeting at 3PM</li>
+          <li>New message from John</li>
+          <li>Your order has been shipped</li>
+          <li>New comment on your post</li>
+          <li>Update available for your app</li>
+          <li>Reminder: Meeting at 3PM</li>
         </ul>
-    </div>
+      </div>
 
-    <!-- Profile Menu -->
-    <a href="#" class="profile" id="profileIcon">
+      <!-- Profile Menu -->
+      <a href="#" class="profile" id="profileIcon">
         <img src="https://placehold.co/600x400/png" alt="Profile">
-    </a>
-    <div class="profile-menu" id="profileMenu">
+      </a>
+      <div class="profile-menu" id="profileMenu">
         <ul>
-            <li><a href="#">My Profile</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Log Out</a></li>
+          <li><a href="#">My Profile</a></li>
+          <li><a href="#">Settings</a></li>
+          <li id="logoutBtn"><a >Log Out</a></li>
         </ul>
-    </div>
-</nav>
-<!-- NAVBAR -->
+      </div>
+    </nav>
+    <!-- NAVBAR -->
 
 
-		<!-- MAIN -->
-		<main>
-            <div class="header-section">
-                <div class="row">
-                    <div class="col-md-10">
-                        
-                        <div class="head-title">
-                            <div class="left">
-                                <h1 style="font-size: 26px;color: black;">Payroll Master</h1>
-                                <ul class="breadcrumb" style="padding: 0px; background: transparent;">
-                                    <li>
-                                        <a href="#">Dashboard</a>
-                                    </li>
-                                    <!-- <li><i class='bx bx-chevron-right' ></i></li> -->
-                                    <li>
-                                        <a class="active" href="#">Payroll Master</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- <a href="#" class="btn-download">
+    <!-- MAIN -->
+    <main>
+      <div class="header-section">
+        <div class="row">
+          <div class="col-md-10">
+
+            <div class="head-title">
+              <div class="left">
+                <h1 style="font-size: 26px;color: black;">Payroll Master</h1>
+                <ul class="breadcrumb" style="padding: 0px; background: transparent;">
+                  <li>
+                    <a href="#">Dashboard</a>
+                  </li>
+                  <!-- <li><i class='bx bx-chevron-right' ></i></li> -->
+                  <li>
+                    <a class="active" href="#">Payroll Master</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- <a href="#" class="btn-download">
                                 <i class='bx bxs-cloud-download bx-fade-down-hover' ></i>
                                 <span class="text">Get PDF</span>
                             </a> -->
-                        </div>
-                    </div>
-<!-- 
+            </div>
+          </div>
+          <!-- 
                     <div class="col-md-2">
                         <button type="button" class="btn btn-full btn-create " data-toggle="modal" data-target="#myModal"><i class="bi bi-plus-circle"></i> Create</button>
                     </div> -->
+        </div>
+
+      </div>
+
+
+
+
+      <ul class="tab-group mt-5">
+        <li class="tab active"><a href="#signup">Run Payroll</a></li>
+        <li class="tab"><a href="#login">payslip</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="signup">
+
+          <div class="form-sec">
+
+            <form id="Payrolrunform">
+              <div class="row">
+
+                <div class="col-md-6">
+                  <label> Name</label>
+                  <input type="text" id="name" class="form-control" placeholder="Enter  name" required>
                 </div>
-			
-</div>
 
 
+                <div class="col-md-6">
+                  <label> Year</label>
+                  <input type="number" id="year" class="form-control" placeholder="year" required>
+                </div>
 
-  
-<ul class="tab-group mt-5">
-    <li class="tab active"><a href="#signup">Run Payroll</a></li>
-    <li class="tab"><a href="#login">payslip</a></li>
-  </ul>
-  
-  <div class="tab-content">
-    <div id="signup">   
-      
-      <div class="form-sec">
-        
-        <form id="Payrolrunform">
-            <div class="row">
-
-              <div class="col-md-6">
-                <label>  Name</label>
-                <input type="text" id="name" class="form-control" placeholder="Enter  name" required>
-              </div>
-
-
-              <div class="col-md-6">
-                <label>  Year</label>
-                <input type="number" id="year" class="form-control" placeholder="year" required>
-              </div>
-
-              <div class="col-md-6">
-                <label>Select Month</label>
-                <select class="form-control" id="month" name="month" required>
-                  <option value="">-- Select Month --</option>
-                  <option value="1">January</option>
-                  <option value="2">February</option>
-                  <option value="3">March</option>
-                  <option value="4">April</option>
-                  <option value="5">May</option>
-                  <option value="6">June</option>
-                  <option value="7">July</option>
-                  <option value="8">August</option>
-                  <option value="9">September</option>
-                  <option value="10">October</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
-                </select>
-              </div>
-              
-
-              <div class="col-md-6">
-                <label>  Payment Date</label>
-                <input type="date" id="payment_date" class="form-control" placeholder="Enter  date" required>
-              </div>
-
-
-
-              <div class="col-md-6">
-                <label>Select Branch</label>
-                <div class="custom-sel">
-                  <select class="form-control" id="branch">
-                    <option value="">-- Select Branch --</option>
+                <div class="col-md-6">
+                  <label>Select Month</label>
+                  <select class="form-control" id="month" name="month" required>
+                    <option value="">-- Select Month --</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
                   </select>
                 </div>
-              </div>
+
+
+                <div class="col-md-6">
+                  <label> Payment Date</label>
+                  <input type="date" id="payment_date" class="form-control" placeholder="Enter  date" required>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <label>Select Branch</label>
+                  <div class="custom-sel">
+                    <select class="form-control" id="branch">
+                      <option value="">-- Select Branch --</option>
+                    </select>
+                  </div>
+                </div>
 
 
 
 
 
-            
-              
+
+
               </div>
               <div class=" mt-4">
-             
-                    
-             
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-                    <button type="submit" class="btn btn-primary">Run Payroll</button>
-           
+
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                <button type="submit" class="btn btn-primary">Run Payroll</button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+
+
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="payrolrunTable">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>No</th>
+                      <th>Name</th>
+                      <th>Year</th>
+
+                      <th>Month</th>
+                      <th>Payment date</th>
+                      <th>Branch</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+
+                    </tr>
+                  </thead>
+                  <tbody id="payrolrunTableBody">
+                    <!-- Roles will be injected here -->
+                  </tbody>
+                </table>
+              </div>
             </div>
-              
-          </form>
+          </div>
 
-      </div>
-     
+        </div>
+
+        <div id="login">
+
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="payrolrunTable">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>No</th>
+                      <th>Employee</th>
+                      <th>Payroll Name</th>
+                      <th>Month</th>
+                      <th>Year</th>
+                      <th>Payment Date</th>
+                      <th>Gross Salary</th>
+                      <th>Additions</th>
+                      <th>Deductions</th>
+                      <th>Net Salary</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="paySlipTableBody">
+                    <!-- Payslip rows will be injected here -->
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
 
 
-      <div class="row mt-4">
-        <div class="col-md-12">
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="payrolrunTable">
-              <thead class="thead-dark">
-                <tr>
-                  <th>No</th>
-                  <th>Name</th>
-                  <th>Start date</th>
 
-                  <th>End date</th>
-                  <th>Payment date</th>
-                  <th>Branch</th>
-                  <th>Status</th>
-                
-                </tr>
-              </thead>
-              <tbody id="payrolrunTableBody">
-                <!-- Roles will be injected here -->
-              </tbody>
-            </table>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-10">
+                    <h4>Payslip Details</h4>
+                  </div>
+                  <div class="col-md-2 text-right">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                </div>
+                <hr>
+
+
+
+                <!-- 🟡 You must include this -->
+                <div id="payslipContent">
+
+                  <div id="payslipDetails">
+
+                    <!-- Payslip data will be injected here -->
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-10"></div>
+
+                  <div class="col-md-2">
+                    <button type="button" class="btn btn-download btn-danger mt-3">Download</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-    </div>
+
+
+        <script>
+          document.querySelector('.btn-download').addEventListener('click', function () {
+            const element = document.getElementById('payslipContent');
+
+            const opt = {
+              margin: 0.5,
+              filename: 'payslip.pdf',
+              image: { type: 'jpeg', quality: 0.98 },
+              html2canvas: { scale: 2 },
+              jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+          });
+        </script>
+
+
+
+      </div><!-- tab-content -->
+
+
+
+
+
+
+
+
+
+      <script>
+        $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+
+          var $this = $(this),
+            label = $this.prev('label');
+
+          if (e.type === 'keyup') {
+            if ($this.val() === '') {
+              label.removeClass('active highlight');
+            } else {
+              label.addClass('active highlight');
+            }
+          } else if (e.type === 'blur') {
+            if ($this.val() === '') {
+              label.removeClass('active highlight');
+            } else {
+              label.removeClass('highlight');
+            }
+          } else if (e.type === 'focus') {
+
+            if ($this.val() === '') {
+              label.removeClass('highlight');
+            }
+            else if ($this.val() !== '') {
+              label.addClass('highlight');
+            }
+          }
+
+        });
+
+        $('.tab a').on('click', function (e) {
+
+          e.preventDefault();
+
+          $(this).parent().addClass('active');
+          $(this).parent().siblings().removeClass('active');
+
+          target = $(this).attr('href');
+
+          $('.tab-content > div').not(target).hide();
+
+          $(target).fadeIn(600);
+
+        });
+      </script>
+
+
+
+
+
+<script>
+  // ================== Dynamic API Base ==================
+  const API_BASE_URL =
+    window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+      ? "http://127.0.0.1:8001"
+      : "http://167.86.74.89"; // live server
+
+  const token = localStorage.getItem("access_token");
+
+  // ================== GET Payslip List ==================
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch(`${API_BASE_URL}/employee/payslip/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((payslips) => {
+        const tableBody = document.getElementById("paySlipTableBody");
+        tableBody.innerHTML = "";
+
+        const monthNames = [
+          "", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
+
+        payslips.forEach((item, index) => {
+          const payroll = item.payroll_run;
+          const row = `
+            <tr class="payslip-row" data-id="${item.id}">
+              <td>${index + 1}</td>
+              <td>${item.employee}</td>
+              <td>${payroll?.name || '-'}</td>
+              <td>${monthNames[payroll?.month] || '-'}</td>
+              <td>${payroll?.year || '-'}</td>
+              <td>${payroll?.payment_date || '-'}</td>
+              <td>${item.gross_salary}</td>
+              <td>${item.total_additions}</td>
+              <td>${item.total_deductions}</td>
+              <td>${item.net_salary}</td>
+              <td>${item.status}</td>
+            </tr>`;
+          tableBody.insertAdjacentHTML("beforeend", row);
+        });
+      })
+      .catch((err) => console.error("Error fetching payslip data:", err));
+  });
+
+  // ================== Payslip Details Modal ==================
+  document.addEventListener("click", function (e) {
+    if (e.target.closest(".payslip-row")) {
+      const row = e.target.closest(".payslip-row");
+      const payslipId = row.getAttribute("data-id");
+      openPayslipModal(payslipId);
+    }
+  });
+
+  function openPayslipModal(payslipId) {
+    fetch(`${API_BASE_URL}/employee/payslip/${payslipId}/`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((payslip) => {
+        const payroll = payslip.payroll_run;
+        const emp = payslip.employee;
+        const company = emp.company;
+
+      
+    const html = `
+<style>
+.payslip-box {
+font-family: Arial, sans-serif;
+font-size: 14px;
+color: #000;
+}
+.payslip-title {
+color: #8B0000;
+font-weight: bold;
+font-size: 22px;
+text-align: left;
+margin-bottom: 10px;
+}
+.main-heading {
+font-size: 22px;
+font-weight: bold;
+text-align: center;
+margin: 10px 0;
+}
+.row-flex {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+margin-bottom: 10px;
+}
+.bordered {
+border: 1px solid #000;
+padding: 5px;
+margin-bottom: 10px;
+white-space: pre-line;
     
-    <div id="login"> 
-      
-      <div class="row mt-4">
-        <div class="col-md-12">
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="payrolrunTable">
-              <thead class="thead-dark">
-                <tr>
-                  <th>No</th>
-                  <th>Employee</th>
-                  <th>Payroll Name</th>
-                  <th>Month</th>
-                  <th>Year</th>
-                  <th>Payment Date</th>
-                  <th>Gross Salary</th>
-                  <th>Additions</th>
-                  <th>Deductions</th>
-                  <th>Net Salary</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody id="paySlipTableBody">
-                <!-- Payslip rows will be injected here -->
-              </tbody>
-            </table>
-          </div>
-          
-        </div>
-      </div>
-       
-    </div>
-    
 
-      
-  <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-10">
-            <h4>Payslip Details</h4>
-          </div>
-          <div class="col-md-2 text-right">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-        </div>
-        <hr>
+}
+.half {
+width: 48%;
+}
+.payslip-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 10px;
+}
+.payslip-table td, .payslip-table th {
+border: 1px solid #000;
+padding: 6px;
+}
+.payslip-table th {
+background-color: #eee;
+}
+.section-label {
+margin-top: 20px;
+border-top: 2px solid #8B0000;
+padding-top: 10px;
+font-weight: bold;
+font-size: 16px;
+color: #8B0000;
+}
 
-     
+.row-flex {
+display: flex;
+align-items: center;
+justify-content: flex-start; /* align left */
+margin-bottom: 6px;
+}
+.bordered {
+border: 1px solid #000;
+padding: 4px 8px;
+text-align: left;
+display: inline-block;
+}
 
-        <!-- 🟡 You must include this -->
-        <div id="payslipContent">
+</style>
 
-        <div id="payslipDetails">
-          
-          <!-- Payslip data will be injected here -->
-        </div>
-        </div>
+<div class="payslip-box">
+<div class="payslip-title">Pay Slip</div>
 
+<div class="row">
 
-        <div class="row">
-          <div class="col-md-10"></div>
+<div class="col-md-6">
+    <div class="main-heading">MEETHAL VENTURES LTD</div>
 
-          <div class="col-md-2">
-            <button type="button" class="btn btn-download btn-danger mt-3">Download</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
   </div>
+
+   <div class="col-md-6">
+    
+<div >
+<div><strong>Month:</strong> ${payroll.name}-${payroll.year}</div>
+<div class="row-flex">
+<div><strong>From:</strong> 01-${payroll.name}-${payroll.year}</div>
+<div><strong>To:</strong> ${payroll.payment_date}</div>
+</div>
+</div>
+  </div>
+</div><hr style="color:red;border:solid 1.5px #8B0000">
+
+
+
+<!-- Employer Details -->
+<div class="row-flex" style="margin-bottom:0px">
+<div style="width: 25%;color:#8B0000;">Employer’s Name:</div>
+<div class="bordered" style="width: 35%;margin-bottom:0px"><strong>${company.name?.toUpperCase()}</strong></div>
+</div>
+
+<div class="row-flex" style="margin-bottom:0px">
+<div style="width: 25%;color:#8B0000">Address:</div>
+<div class="bordered" style="width: 35%; margin-bottom:0px"><strong>${company.address}</strong></div>
 </div>
 
 
 
-<script>
-  document.querySelector('.btn-download').addEventListener('click', function () {
-    const element = document.getElementById('payslipContent');
+<!-- Employee Details -->
+<div class="row-flex mt-5" style="margin-bottom:0px">
+<div style="width: 25%;color:#8B0000"">Employee’s Name:</div>
+<div class="bordered" style="width: 35%;margin-bottom:0px"><strong>${emp.first_name?.toUpperCase()} ${emp.last_name?.toUpperCase()}</strong></div>
+</div>
+<div class="row-flex" style="margin-bottom:0px">
+<div style="width: 25%;color:#8B0000"">Type of Employment:</div>
+<div class="bordered" style="width: 35%;margin-bottom:0px"><strong>${emp.type_of_employment || '-'}</strong></div>
+</div>
+<div class="row-flex" style="margin-bottom:0px">
+<div style="width: 25%;color:#8B0000"">ID No.:</div>
+<div class="bordered" style="width: 35%;margin-bottom:0px">${emp.emp_code}</div>
+</div>
+<div class="row-flex" style="margin-bottom:0px">
+<div style="width: 25%;color:#8B0000"">Social Security No.:</div>
+<div class="bordered" style="width: 35%;margin-bottom:0px">${emp.social_security_no}</div>
+</div>
+<div class="row-flex" style="margin-bottom:0px">
+<div style="width: 25%;color:#8B0000"">Category:</div>
+<div class="bordered" style="width: 35%;margin-bottom:0px">${emp.category?.name || '-'}</div>
+</div>
 
-    const opt = {
-      margin:       0.5,
-      filename:     'payslip.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
+<div class="row-flex" style="margin-bottom:0px">
+<div style="width: 25%;color:#8B0000"">Address:</div>
+<div class="bordered" style="width: 35%;margin-bottom:0px">${emp.address || '-'}</div>
+</div>
+<hr style="color:red;border:solid 1.5px #8B0000">
 
-    html2pdf().set(opt).from(element).save();
-  });
-</script>
+<!-- Earnings Section -->
 
+${payslip.components && payslip.components.length > 0
+                  ? (
+                    // Split additions and deductions
+                    (() => {
+                      const additions = payslip.components.filter(c => c.component_type === "addition");
+                      const deductions = payslip.components.filter(c => c.component_type === "deduction");
 
+                      // Render additions
+                      const additionHtml = additions.map(comp => `
+        <div class="row-flex" style="margin-bottom:0px">
+          <div style="width: 25%;color:#8B0000">${comp.component_name}</div>
+          <div class="bordered" style="width: 35%;margin-bottom:0px">€${comp.amount}</div>
+        </div>
+      `).join('');
 
-  </div><!-- tab-content -->
+                      // Render deductions
+                      const deductionHtml = deductions.map(comp => `
+        <div class="row-flex" style="margin-bottom:0px">
+          <div style="width: 25%;color:#8B0000">${comp.component_name}</div>
+          <div class="bordered" style="width: 35%;margin-bottom:0px">€${comp.amount}</div>
+        </div>
+      `).join('');
 
+                      // Return full block (additions -> gross -> deductions -> net)
+                      return `
+        ${additionHtml}
 
+        <div class="row-flex mt-4">
+          <div style="width: 25%;color:#8B0000;text-align:center;"><strong>Gross Salary</strong></div>
+          <div class="bordered" style="width: 35%;"><strong>€${payslip.gross_salary}</strong></div>
+        </div>
 
+        ${deductionHtml}
 
-  <!-- post employee salary -->
-
-<script>
-      document.getElementById('salarycomponent').addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent default form submission
-
-    const token = localStorage.getItem('access_token'); // If your API requires authentication
-
-  const data = {
-    amount: document.getElementById('amount').value,
-    employee: document.getElementById('employee').value,
-    component: document.getElementById('component').value,
-    is_active: document.getElementById('is_active').checked,
-
-};
-
-    fetch('http://127.0.0.1:8001/employee/employeesalary/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`  // Remove this line if your API doesn't require login
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => {
-      if (!response.ok) throw new Error("Failed to register user.");
-      return response.json();
-    })
-    .then(result => {
-      alert('Employee Salary  Assigned successfully!');
-      document.getElementById('salarycomponent').reset();
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Error registering user.');
-    });
-  });
-
-</script>
+        <div class="row-flex mt-4">
+          <div style="width: 25%;color:#8B0000;text-align:center;"><strong>Net Salary</strong></div>
+          <div class="bordered" style="width: 35%; border-bottom:solid 3px;"><strong>€${payslip.net_salary}</strong></div>
+        </div>
+      `;
+                    })()
+                  )
+                  : '<div class="row-flex"><div style="width: 25%;"><strong>Components</strong></div><div class="bordered" style="width: 35%;">No components available</div></div>'
+                }
+<hr style="color:red;border:solid 1.5px #8B0000">
 
 
 
-<!-- get employee salary -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const token = localStorage.getItem('access_token');
+</div>
 
-    fetch('http://127.0.0.1:8001/employee/employeesalary/', {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => {
-      if (!response.ok) throw new Error("Failed to fetch Employee Salary");
-      return response.json();
-    })
-    .then(roles => {
-      const tableBody = document.getElementById("EmployeeSalaryTableBody");
-      tableBody.innerHTML = ''; // Clear existing content
+`;
 
-      roles.forEach((role, index) => {
-        const row = `
-          <tr>
-            <td>${index + 1}</td>
-            <td>${role.amount || 'N/A'}</td>
-            <td>${role.employee || 'N/A'}</td>
-            <td>${role.component || 'N/A'}</td>
-            <td>${role.is_active || 'N/A'}</td>
-         
 
-            
-          </tr>
-        `;
-        tableBody.insertAdjacentHTML('beforeend', row);
+        document.getElementById("payslipDetails").innerHTML = html;
+        $("#myModal").modal("show");
+      })
+      .catch((err) => {
+        console.error("Error loading payslip details:", err);
+        alert("Failed to load payslip details.");
       });
+  }
+
+  // ================== CRUD Payroll Run ==================
+
+  // Load Payroll Runs (Read)
+  function loadPayrollRuns() {
+    fetch(`${API_BASE_URL}/employee/PayrollRun/`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
     })
-    .catch(error => {
-      console.error("Error fetching roles:", error);
-    });
-  });
-</script>
-
-
-  <script>
-    $('.form').find('input, textarea').on('keyup blur focus', function (e) {
-  
-  var $this = $(this),
-      label = $this.prev('label');
-
-	  if (e.type === 'keyup') {
-			if ($this.val() === '') {
-          label.removeClass('active highlight');
-        } else {
-          label.addClass('active highlight');
-        }
-    } else if (e.type === 'blur') {
-    	if( $this.val() === '' ) {
-    		label.removeClass('active highlight'); 
-			} else {
-		    label.removeClass('highlight');   
-			}   
-    } else if (e.type === 'focus') {
-      
-      if( $this.val() === '' ) {
-    		label.removeClass('highlight'); 
-			} 
-      else if( $this.val() !== '' ) {
-		    label.addClass('highlight');
-			}
-    }
-
-});
-
-$('.tab a').on('click', function (e) {
-  
-  e.preventDefault();
-  
-  $(this).parent().addClass('active');
-  $(this).parent().siblings().removeClass('active');
-  
-  target = $(this).attr('href');
-
-  $('.tab-content > div').not(target).hide();
-  
-  $(target).fadeIn(600);
-  
-});
-  </script>
-
-
-
-
-  
-
-
-			
-		</main>
-		<!-- MAIN -->
-	</section>
-	<!-- CONTENT -->
-
-
-    
-  
-   
-
-      <!-- post salary component -->
-
-      <script>
-        document.getElementById('userForm').addEventListener('submit', function (e) {
-          e.preventDefault(); // Prevent default form submission
-      
-          const token = localStorage.getItem('access_token'); // If your API requires authentication
-      
-        const data = {
-      name: document.getElementById('name').value,
-      component_type: document.getElementById('component_type').value,
-      code: document.getElementById('code').value,
-      deduct_leave: document.getElementById('deduct_leave').checked,
-      is_fixed: document.getElementById('is_fixed').checked,
-      formula: document.getElementById('formula').value,
-      description: document.getElementById('description').value
-    };
-      
-          fetch('http://127.0.0.1:8001/employee/salarycomponent/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`  // Remove this line if your API doesn't require login
-            },
-            body: JSON.stringify(data)
-          })
-          .then(response => {
-            if (!response.ok) throw new Error("Failed to register user.");
-            return response.json();
-          })
-          .then(result => {
-            alert('Salary component registered successfully!');
-            document.getElementById('userForm').reset();
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('Error registering user.');
-          });
-        });
-      </script>
-    
-
-    <script>
-        document.getElementById('logoutBtn').addEventListener('click', function (e) {
-          e.preventDefault();
-      
-          // Clear token or any other user session data
-          localStorage.removeItem('access_token');
-      
-          // Optional: Clear any other session keys
-          // localStorage.clear();
-      
-          // Redirect to login page
-          window.location.href = 'login.html';  // Update this path if needed
-        });
-      </script>
-
-    <!-- JavaScript -->
-
-
-
-
-    <!-- get branches in options -->
-     <script>
-          // get Salary Component 
-          document.addEventListener("DOMContentLoaded", function () {
-      const token = localStorage.getItem('access_token');
-  
-      fetch('http://127.0.0.1:8001/company/api/company/', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(response => {
-        if (!response.ok) throw new Error("Failed to fetch branch");
-        return response.json();
-      })
-      .then(companies => {
-        const companySelect = document.getElementById("branch");
-  
-        companies.forEach(branch => {
-          const option = document.createElement("option");
-          option.value = branch.id;
-          option.textContent = branch.name;
-          companySelect.appendChild(option);
-        });
-      })
-      .catch(error => {
-        console.error("Error fetching branch list:", error);
-      });
-    });
-
-     </script>
-
-
-
-
-  <!-- get payroll run in table view -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const token = localStorage.getItem('access_token');
-  
-      fetch('http://127.0.0.1:8001/employee/PayrollRun/', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(response => {
-        if (!response.ok) throw new Error("Failed to fetch roles");
-        return response.json();
-      })
-      .then(roles => {
+      .then((res) => res.json())
+      .then((runs) => {
         const tableBody = document.getElementById("payrolrunTableBody");
-        tableBody.innerHTML = ''; // Clear existing content
-  
-        roles.forEach((role, index) => {
+        tableBody.innerHTML = "";
+
+        runs.forEach((run, index) => {
           const row = `
             <tr>
               <td>${index + 1}</td>
-              <td>${role.name || 'N/A'}</td>
-              <td>${role.start_date || 'N/A'}</td>
-              <td>${role.end_date || 'N/A'}</td>
-              <td>${role.payment_date || 'N/A'}</td>
-              <td>${role.branch || 'N/A'}</td>
-              <td>${role.status || 'N/A'}</td>
-
-              
-            </tr>
-          `;
-          tableBody.insertAdjacentHTML('beforeend', row);
+              <td>${run.name || "N/A"}</td>
+              <td>${run.year || "N/A"}</td>
+              <td>${run.month || "N/A"}</td>
+              <td>${run.payment_date || "N/A"}</td>
+              <td>${run.branch || "N/A"}</td>
+              <td>${run.status || "N/A"}</td>
+              <td>
+                <button onclick="editPayrollRun(${run.id})">✏️ Edit</button>
+                <button onclick="deletePayrollRun(${run.id})">🗑 Delete</button>
+              </td>
+            </tr>`;
+          tableBody.insertAdjacentHTML("beforeend", row);
         });
       })
-      .catch(error => {
-        console.error("Error fetching roles:", error);
+      .catch((err) => console.error("Error fetching payroll runs:", err));
+  }
+  document.addEventListener("DOMContentLoaded", loadPayrollRuns);
+
+  // Create Payroll Run
+  document.getElementById("Payrolrunform").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById("name").value,
+      year: document.getElementById("year").value,
+      month: document.getElementById("month").value,
+      payment_date: document.getElementById("payment_date").value,
+      branch: document.getElementById("branch").value,
+    };
+
+    fetch(`${API_BASE_URL}/employee/PayrollRun/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        alert("✅ Payroll Run created");
+        document.getElementById("Payrolrunform").reset();
+        loadPayrollRuns();
+      })
+      .catch(() => alert("❌ Error creating payroll run"));
+  });
+
+  // Update Payroll Run
+  function editPayrollRun(id) {
+    fetch(`${API_BASE_URL}/employee/PayrollRun/${id}/`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((run) => {
+        document.getElementById("name").value = run.name;
+        document.getElementById("year").value = run.year;
+        document.getElementById("month").value = run.month;
+        document.getElementById("payment_date").value = run.payment_date;
+        document.getElementById("branch").value = run.branch;
+
+        const form = document.getElementById("Payrolrunform");
+        form.onsubmit = function (e) {
+          e.preventDefault();
+          const updatedData = {
+            name: document.getElementById("name").value,
+            year: document.getElementById("year").value,
+            month: document.getElementById("month").value,
+            payment_date: document.getElementById("payment_date").value,
+            branch: document.getElementById("branch").value,
+          };
+
+          fetch(`${API_BASE_URL}/employee/PayrollRun/${id}/`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+            body: JSON.stringify(updatedData),
+          })
+            .then((res) => res.json())
+            .then(() => {
+              alert("✅ Payroll Run updated");
+              form.reset();
+              form.onsubmit = null;
+              loadPayrollRuns();
+            })
+            .catch(() => alert("❌ Failed to update payroll run"));
+        };
       });
+  }
+
+  // Delete Payroll Run
+  function deletePayrollRun(id) {
+    if (!confirm("Delete this payroll run?")) return;
+    fetch(`${API_BASE_URL}/employee/PayrollRun/${id}/`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => {
+        if (res.status === 204) {
+          alert("🗑 Payroll Run deleted");
+          loadPayrollRuns();
+        } else {
+          alert("❌ Failed to delete payroll run");
+        }
+      })
+      .catch(() => alert("❌ Error deleting payroll run"));
+  }
+</script>
+
+
+
+  <script>
+    const detailDiv = document.getElementById("payslipDetails");
+    if (!detailDiv) {
+      console.error("❌ #payslipDetails element not found in DOM.");
+      return;
+    }
+    detailDiv.innerHTML = html;
+  </script>
+
+
+
+    </main>
+    <!-- MAIN -->
+  </section>
+  <!-- CONTENT -->
+
+
+
+
+
+
+
+  <script>
+    document.getElementById('logoutBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+  
+      // Remove only specific session data
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token'); // if you use one
+      localStorage.removeItem('user_id');       // if stored
+  
+      // OR clear everything (if you don’t store other important data)
+      // localStorage.clear();
+  
+      // Redirect to login page
+      window.location.href = 'login.html';  
     });
   </script>
   
 
-
-    <!-- get payslip in table view -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const token = localStorage.getItem('access_token');
-    
-        fetch('http://127.0.0.1:8001/employee/payslip/', {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(response => {
-          if (!response.ok) throw new Error("Failed to fetch payslip data");
-          return response.json();
-        })
-        .then(payslips => {
-          const tableBody = document.getElementById("paySlipTableBody");
-          tableBody.innerHTML = ''; // Clear existing content
-    
-          payslips.forEach((item, index) => {
-            const payroll = item.payroll_run;
-            const monthNames = [
-              '', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-              'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-            ];
-    
-            const row = `
-  <tr class="payslip-row" data-id="${item.id}">
-    <td>${index + 1}</td>
-    <td>${item.employee}</td>
-    <td>${payroll?.name || '-'}</td>
-    <td>${monthNames[payroll?.month] || '-'}</td>
-    <td>${payroll?.year || '-'}</td>
-    <td>${payroll?.payment_date || '-'}</td>
-    <td>${item.gross_salary}</td>
-    <td>${item.total_additions}</td>
-    <td>${item.total_deductions}</td>
-    <td>${item.net_salary}</td>
-    <td>${item.status}</td>
-  </tr>
-`;
-
-            tableBody.insertAdjacentHTML('beforeend', row);
-          });
-        })
-        .catch(error => {
-          console.error("Error fetching payslip data:", error);
-        });
-      });
+  <!-- JavaScript -->
 
 
 
 
-      
-    </script>
-    
-
-    <script>
-      // Event delegation to handle click on dynamically generated rows
-document.addEventListener("click", function (e) {
-  if (e.target.closest(".payslip-row")) {
-    const row = e.target.closest(".payslip-row");
-    const payslipId = row.getAttribute("data-id");
-    openPayslipModal(payslipId);
-  }
-});
-
-function openPayslipModal(payslipId) {
-  const token = localStorage.getItem('access_token');
-
-  fetch(`http://127.0.0.1:8001/employee/payslip/${payslipId}/`, {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(response => {
-      if (!response.ok) throw new Error("Failed to fetch payslip details");
-      return response.json();
-    })
-    .then(payslip => {
-      // Populate modal content
-      const payroll = payslip.payroll_run;
-      const html = `
-  <style>
-    .payslip-box {
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      color: #000;
-    }
-    .payslip-title {
-      color: #8B0000;
-      font-weight: bold;
-      font-size: 18px;
-    }
-    .section-title {
-      font-weight: bold;
-      background-color: #8B0000;
-      color: white;
-      padding: 5px;
-      margin-top: 20px;
-    }
-    .bordered {
-      border: 1px solid #000;
-      padding: 5px;
-    }
-    .row-flex {
-      display: flex;
-      justify-content: space-between;
-    }
-    .payslip-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-    .payslip-table td, .payslip-table th {
-      border: 1px solid #000;
-      padding: 6px;
-    }
-    .payslip-table th {
-      background-color: #eee;
-    }
-  </style>
-
-  <div class="payslip-box">
-    <div class="row-flex">
-      <div><span class="payslip-title">Pay Slip</span></div>
-      <div><strong>Month:</strong> ${payroll?.name}-${payroll?.year}</div>
-    </div>
-    <div class="row-flex">
-      <div><strong>From:</strong> 01-${payroll?.name}-${payroll?.year}</div>
-      <div><strong>To:</strong> ${payroll?.payment_date}</div>
-    </div>
-
-    <div class="section-title">Employee Details</div>
-    <div class="bordered" style="width: 100%;">
-      <strong>Employee's Name:</strong> ${payslip.employee}<br>
-      <strong>Total Working Days:</strong> ${payslip.total_working_days}
-    </div>
-
-    <div class="section-title">Earnings & Deductions</div>
-    <table class="payslip-table">
-      <tr>
-        <th>#</th>
-        <th>Component</th>
-        <th>Amount (€)</th>
-      </tr>
-      ${
-        payslip.components && payslip.components.length > 0
-          ? payslip.components.map((comp, idx) => `
-            <tr>
-              <td>${idx + 1}</td>
-              <td>Component ${comp.component}</td>
-              <td>${comp.amount}</td>
-            </tr>
-          `).join('')
-          : '<tr><td colspan="3">No components available</td></tr>'
-      }
-
-      <tr>
-        <td colspan="2"><strong>Total Additions</strong></td>
-        <td><strong>€${payslip.total_additions}</strong></td>
-      </tr>
-      <tr>
-        <td colspan="2"><strong>Total Deductions</strong></td>
-        <td><strong>€${payslip.total_deductions}</strong></td>
-      </tr>
-      <tr>
-        <td colspan="2"><strong>Gross Salary</strong></td>
-        <td><strong>€${payslip.gross_salary}</strong></td>
-      </tr>
-      <tr>
-        <td colspan="2"><strong>Net Salary</strong></td>
-        <td><strong>€${payslip.net_salary}</strong></td>
-      </tr>
-    </table>
-  </div>
-`;
 
 
-
-      document.getElementById("payslipDetails").innerHTML = html;
-
-      // Show modal
-      $('#myModal').modal('show');
-    })
-    .catch(error => {
-      console.error("Error loading payslip details:", error);
-      alert("Failed to load payslip details.");
-    });
-}
-
-    </script>
-    
-
-     <!-- post Payrol run component -->
-
-     <script>
-        document.getElementById('Payrolrunform').addEventListener('submit', function (e) {
-          e.preventDefault(); // Prevent default form submission
-      
-          const token = localStorage.getItem('access_token'); // If your API requires authentication
-      
-        const data = {
-      name: document.getElementById('name').value,
-      year: document.getElementById('year').value,
-      month: document.getElementById('month').value,
-
-      payment_date: document.getElementById('payment_date').value,
-      branch: document.getElementById('branch').value
-    };
-      
-          fetch('http://127.0.0.1:8001/employee/PayrollRun/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`  // Remove this line if your API doesn't require login
-            },
-            body: JSON.stringify(data)
-
-          })
-          .then(response => {
-            if (!response.ok) throw new Error("Failed to payroll Run.");
-            return response.json();
-          })
-          .then(result => {
-            alert('payroll Run successfully Completed');
-            document.getElementById('Payrolrunform').reset();
-            window.location.reload();
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('Error payroll Run .');
-          });
-        });
-      </script>
-    
-
-    <script>
-      const detailDiv = document.getElementById("payslipDetails");
-if (!detailDiv) {
-  console.error("❌ #payslipDetails element not found in DOM.");
-  return;
-}
-detailDiv.innerHTML = html;
-    </script>
-
-
-	<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
 
 <script>
-    const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+  const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
-allSideMenu.forEach(item => {
+  allSideMenu.forEach(item => {
     const li = item.parentElement;
 
     item.addEventListener('click', function () {
-        allSideMenu.forEach(i => {
-            i.parentElement.classList.remove('active');
-        })
-        li.classList.add('active');
+      allSideMenu.forEach(i => {
+        i.parentElement.classList.remove('active');
+      })
+      li.classList.add('active');
     })
-});
+  });
 
-// TOGGLE SIDEBAR
-const menuBar = document.querySelector('#content nav .bx.bx-menu');
-const sidebar = document.getElementById('sidebar');
+  // TOGGLE SIDEBAR
+  const menuBar = document.querySelector('#content nav .bx.bx-menu');
+  const sidebar = document.getElementById('sidebar');
 
-// Sidebar toggle işlemi
-menuBar.addEventListener('click', function () {
+  // Sidebar toggle işlemi
+  menuBar.addEventListener('click', function () {
     sidebar.classList.toggle('hide');
-});
+  });
 
-// Sayfa yüklendiğinde ve boyut değişimlerinde sidebar durumunu ayarlama
-function adjustSidebar() {
+  // Sayfa yüklendiğinde ve boyut değişimlerinde sidebar durumunu ayarlama
+  function adjustSidebar() {
     if (window.innerWidth <= 576) {
-        sidebar.classList.add('hide');  // 576px ve altı için sidebar gizli
-        sidebar.classList.remove('show');
+      sidebar.classList.add('hide');  // 576px ve altı için sidebar gizli
+      sidebar.classList.remove('show');
     } else {
-        sidebar.classList.remove('hide');  // 576px'den büyükse sidebar görünür
-        sidebar.classList.add('show');
+      sidebar.classList.remove('hide');  // 576px'den büyükse sidebar görünür
+      sidebar.classList.add('show');
     }
-}
+  }
 
-// Sayfa yüklendiğinde ve pencere boyutu değiştiğinde sidebar durumunu ayarlama
-window.addEventListener('load', adjustSidebar);
-window.addEventListener('resize', adjustSidebar);
+  // Sayfa yüklendiğinde ve pencere boyutu değiştiğinde sidebar durumunu ayarlama
+  window.addEventListener('load', adjustSidebar);
+  window.addEventListener('resize', adjustSidebar);
 
-// Arama butonunu toggle etme
-const searchButton = document.querySelector('#content nav form .form-input button');
-const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-const searchForm = document.querySelector('#content nav form');
+  // Arama butonunu toggle etme
+  const searchButton = document.querySelector('#content nav form .form-input button');
+  const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
+  const searchForm = document.querySelector('#content nav form');
 
-searchButton.addEventListener('click', function (e) {
+  searchButton.addEventListener('click', function (e) {
     if (window.innerWidth < 768) {
-        e.preventDefault();
-        searchForm.classList.toggle('show');
-        if (searchForm.classList.contains('show')) {
-            searchButtonIcon.classList.replace('bx-search', 'bx-x');
-        } else {
-            searchButtonIcon.classList.replace('bx-x', 'bx-search');
-        }
-    }
-})
-
-// Dark Mode Switch
-const switchMode = document.getElementById('switch-mode');
-
-switchMode.addEventListener('change', function () {
-    if (this.checked) {
-        document.body.classList.add('dark');
-    } else {
-        document.body.classList.remove('dark');
-    }
-})
-
-// Notification Menu Toggle
-document.querySelector('.notification').addEventListener('click', function () {
-    document.querySelector('.notification-menu').classList.toggle('show');
-    document.querySelector('.profile-menu').classList.remove('show'); // Close profile menu if open
-});
-
-// Profile Menu Toggle
-document.querySelector('.profile').addEventListener('click', function () {
-    document.querySelector('.profile-menu').classList.toggle('show');
-    document.querySelector('.notification-menu').classList.remove('show'); // Close notification menu if open
-});
-
-// Close menus if clicked outside
-window.addEventListener('click', function (e) {
-    if (!e.target.closest('.notification') && !e.target.closest('.profile')) {
-        document.querySelector('.notification-menu').classList.remove('show');
-        document.querySelector('.profile-menu').classList.remove('show');
-    }
-});
-
-// Menülerin açılıp kapanması için fonksiyon
-    function toggleMenu(menuId) {
-      var menu = document.getElementById(menuId);
-      var allMenus = document.querySelectorAll('.menu');
-
-      // Diğer tüm menüleri kapat
-      allMenus.forEach(function(m) {
-        if (m !== menu) {
-          m.style.display = 'none';
-        }
-      });
-
-      // Tıklanan menü varsa aç, yoksa kapat
-      if (menu.style.display === 'none' || menu.style.display === '') {
-        menu.style.display = 'block';
+      e.preventDefault();
+      searchForm.classList.toggle('show');
+      if (searchForm.classList.contains('show')) {
+        searchButtonIcon.classList.replace('bx-search', 'bx-x');
       } else {
-        menu.style.display = 'none';
+        searchButtonIcon.classList.replace('bx-x', 'bx-search');
       }
     }
+  })
 
-    // Başlangıçta tüm menüleri kapalı tut
-    document.addEventListener("DOMContentLoaded", function() {
-      var allMenus = document.querySelectorAll('.menu');
-      allMenus.forEach(function(menu) {
-        menu.style.display = 'none';
-      });
+  // Dark Mode Switch
+  const switchMode = document.getElementById('switch-mode');
+
+  switchMode.addEventListener('change', function () {
+    if (this.checked) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  })
+
+  // Notification Menu Toggle
+  document.querySelector('.notification').addEventListener('click', function () {
+    document.querySelector('.notification-menu').classList.toggle('show');
+    document.querySelector('.profile-menu').classList.remove('show'); // Close profile menu if open
+  });
+
+  // Profile Menu Toggle
+  document.querySelector('.profile').addEventListener('click', function () {
+    document.querySelector('.profile-menu').classList.toggle('show');
+    document.querySelector('.notification-menu').classList.remove('show'); // Close notification menu if open
+  });
+
+  // Close menus if clicked outside
+  window.addEventListener('click', function (e) {
+    if (!e.target.closest('.notification') && !e.target.closest('.profile')) {
+      document.querySelector('.notification-menu').classList.remove('show');
+      document.querySelector('.profile-menu').classList.remove('show');
+    }
+  });
+
+  // Menülerin açılıp kapanması için fonksiyon
+  function toggleMenu(menuId) {
+    var menu = document.getElementById(menuId);
+    var allMenus = document.querySelectorAll('.menu');
+
+    // Diğer tüm menüleri kapat
+    allMenus.forEach(function (m) {
+      if (m !== menu) {
+        m.style.display = 'none';
+      }
     });
+
+    // Tıklanan menü varsa aç, yoksa kapat
+    if (menu.style.display === 'none' || menu.style.display === '') {
+      menu.style.display = 'block';
+    } else {
+      menu.style.display = 'none';
+    }
+  }
+
+  // Başlangıçta tüm menüleri kapalı tut
+  document.addEventListener("DOMContentLoaded", function () {
+    var allMenus = document.querySelectorAll('.menu');
+    allMenus.forEach(function (menu) {
+      menu.style.display = 'none';
+    });
+  });
 </script>

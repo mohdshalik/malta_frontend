@@ -8,15 +8,12 @@
 	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	<link href='https://unpkg.com/boxicons@2.1.4/dist/boxicons.js' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- Option 1: Include in HTML -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <!-- My CSS -->
+	<!-- My CSS -->
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="astyle.css">
 
@@ -50,25 +47,25 @@
 					<span class="text">Department</span>
 				</a>
 			</li>
-      <li>
+            <li >
 				<a href="role.html">
 					<i class='bx bxs-group bx-sm' ></i>
 					<span class="text">Designation Master</span>
 				</a>
 			</li>
-      <li >
-        <a href="category.html">
-          <i class='bx bxs-group bx-sm' ></i>
-          <span class="text">Category Master</span>
-        </a>
-      </li>
+                  <li class="active">
+				<a href="category.html">
+					<i class='bx bxs-group bx-sm' ></i>
+					<span class="text">Category Master</span>
+				</a>
+			</li>
 			<li>
 				<a href="employee-master.html">
 					<i class='bx bxs-message-dots bx-sm' ></i>
 					<span class="text">Employee</span>
 				</a>
 			</li>
-      <li class="has-submenu">
+			<li class="has-submenu">
 				<a href="#" class="submenu-toggle">
 				  <i class='bx bxs-group bx-sm'></i>
 				  <span class="text">Payroll Master</span>
@@ -105,7 +102,8 @@
 				});
 			  </script>
 			  
-            <li class="active">
+
+            <li>
 				<a href="user-master.html">
 					<i class='bx bxs-group bx-sm' ></i>
 					<span class="text">User Master</span>
@@ -120,7 +118,7 @@
 				</a>
 			</li> -->
 			<li id="logoutBtn">
-				<a >
+				<a>
 					<i class='bx bx-power-off bx-sm bx-burst-hover' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -129,7 +127,23 @@
 	</section>
 	<!-- SIDEBAR -->
 
-
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function (e) {
+          e.preventDefault();
+      
+          // Remove only specific session data
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token'); // if you use one
+          localStorage.removeItem('user_id');       // if stored
+      
+          // OR clear everything (if you don’t store other important data)
+          // localStorage.clear();
+      
+          // Redirect to login page
+          window.location.href = 'login.html';  
+        });
+      </script>
+      
 
 	<!-- CONTENT -->
 	<section id="content">
@@ -180,40 +194,22 @@
 <!-- NAVBAR -->
 
 
-<script>
-  document.getElementById('logoutBtn').addEventListener('click', function (e) {
-    e.preventDefault();
-
-    // Remove only specific session data
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token'); // if you use one
-    localStorage.removeItem('user_id');       // if stored
-
-    // OR clear everything (if you don’t store other important data)
-    // localStorage.clear();
-
-    // Redirect to login page
-    window.location.href = 'login.html';  
-  });
-</script>
-
 		<!-- MAIN -->
 		<main>
-
             <div class="header-section">
                 <div class="row">
                     <div class="col-md-10">
                         
                         <div class="head-title">
                             <div class="left">
-                                <h1 style="font-size: 26px;color: black;">User Master</h1>
+                                <h1 style="font-size: 26px;color: black;">Role Master</h1>
                                 <ul class="breadcrumb" style="padding: 0px; background: transparent;">
                                     <li>
                                         <a href="#">Dashboard</a>
                                     </li>
                                     <!-- <li><i class='bx bx-chevron-right' ></i></li> -->
                                     <li>
-                                        <a class="active" href="#">User Master</a>
+                                        <a class="active" href="#">Category Master</a>
                                     </li>
                                 </ul>
                             </div>
@@ -225,54 +221,33 @@
                     </div>
 
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-full btn-create mt-4" data-toggle="modal" data-target="#myModal"><i class="bi bi-plus-circle"></i> Create</button>
+                        <button type="button" class="btn btn-full btn-create " data-toggle="modal" data-target="#myModal"><i class="bi bi-plus-circle"></i> Create</button>
                     </div>
                 </div>
 			
 </div>
 
 
-<!-- Modal -->
 
-        
-
-
-                    <div class="row mt-4" id="userListContainer">
-                      
-                    </div>
-
-
-
-                <!-- <div class="row">
-                    <div class="col-md-6">
-                        <label>User Name</label>
-                        <input type="text" class="form-control" placeholder="enter user name">
-
-                    </div>
-
-                    <div class="col-md-6">
-                        <label>Email Address</label>
-                        <input type="text" class="form-control" placeholder="enter email address">
-
-                    </div>
-
-                    <div class="col-md-6">
-                        <label>First name</label>
-                        <input type="text" class="form-control" placeholder="enter first name">
-
-                    </div>
-                    <div class="col-md-6">
-                        <label>Last name</label>
-                        <input type="text" class="form-control" placeholder="enter last name">
-
-                    </div>
-                    <div class="col-md-6">
-                        <label>Password</label>
-                        <input type="password" class="form-control" placeholder="enter password">
-
-                    </div>
-                </div> -->
-             
+<div class="row mt-4">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped" id="rolesTable">
+          <thead class="thead-dark">
+            <tr>
+              <th>No</th>
+              <th>Category Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rolesTableBody">
+            <!-- Roles will be injected here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
 
 
 			
@@ -282,6 +257,7 @@
 	<!-- CONTENT -->
 
 
+    
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-lg"  >
         
@@ -292,7 +268,7 @@
 
                 <div class="row">
                     <div class="col-md-10">
-                        <h4 class="modal-title" style="text-align: left;">Create User</h4><hr>
+                        <h4 class="modal-title" style="text-align: left;">Create Category </h4><hr>
 
                     </div>
                     <div class="col-md-2">
@@ -304,36 +280,18 @@
                 <form id="userForm">
                     <div class="row">
                       <div class="col-md-6">
-                        <label>User Name</label>
-                        <input type="text" id="username" class="form-control" placeholder="Enter user name" required>
+                        <label>Category Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter  Category name" required>
                       </div>
-                
-                      <div class="col-md-6">
-                        <label>Email Address</label>
-                        <input type="email" id="email" class="form-control" placeholder="Enter email address" required>
+                   
+                      
                       </div>
-                
-                      <div class="col-md-6">
-                        <label>First Name</label>
-                        <input type="text" id="first_name" class="form-control" placeholder="Enter first name">
-                      </div>
-                
-                      <div class="col-md-6">
-                        <label>Last Name</label>
-                        <input type="text" id="last_name" class="form-control" placeholder="Enter last name">
-                      </div>
-                
-                      <div class="col-md-6">
-                        <label>Password</label>
-                        <input type="password" id="password" class="form-control" placeholder="Enter password" required>
-                      </div>
-                    </div>
-                
-                    <div class="mt-3">
+                      <div class="mt-3">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
                       <button type="submit" class="btn btn-primary">Register</button>
                     </div>
+                      
                   </form>
             </div>
             <!-- <div class="modal-footer">
@@ -346,47 +304,26 @@
         </div>
       </div>
 
-      <div class="modal fade" id="myModalEdit" role="dialog">
-        <div class="modal-dialog modal-lg">
+      <div class="modal fade" id="editCategoryModal" role="dialog">
+        <div class="modal-dialog modal-md">
           <div class="modal-content">
       
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-10">
-                  <h4 class="modal-title">Edit User</h4>
-                  <hr>
+                  <h4 class="modal-title">Edit Category</h4><hr>
                 </div>
                 <div class="col-md-2">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
               </div>
       
-              <form id="editUserForm">
-                <input type="hidden" id="edit_user_id" />
+              <form id="editCategoryForm">
+                <input type="hidden" id="edit_category_id" />
       
                 <div class="form-group">
-                  <label>Username</label>
-                  <input type="text" id="edit_username" class="form-control" required />
-                </div>
-      
-                <div class="form-group">
-                  <label>Email</label>
-                  <input type="email" id="edit_email" class="form-control" required />
-                </div>
-      
-                <div class="form-group">
-                  <label>First Name</label>
-                  <input type="text" id="edit_first_name" class="form-control" />
-                </div>
-      
-                <div class="form-group">
-                  <label>Last Name</label>
-                  <input type="text" id="edit_last_name" class="form-control" />
-                </div>
-      
-                <div class="form-group">
-                  <label>Password (leave blank if unchanged)</label>
-                  <input type="password" id="edit_password" class="form-control" />
+                  <label>Category Name</label>
+                  <input type="text" id="edit_category_name" class="form-control" required />
                 </div>
       
                 <button type="submit" class="btn btn-success">💾 Save Changes</button>
@@ -396,163 +333,176 @@
         </div>
       </div>
       
+
+      
       <script>
-        // ✅ Dynamic API Base URL
-        const API_BASE_URL = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
-          ? "http://127.0.0.1:8001"
-          : "http://167.86.74.89"; // live URL
-      
-        const token = localStorage.getItem("access_token");
-      
-        // ✅ CREATE USER
-        document.getElementById("userForm").addEventListener("submit", function (e) {
-          e.preventDefault();
-      
-          const data = {
-            username: document.getElementById("username").value,
-            email: document.getElementById("email").value,
-            first_name: document.getElementById("first_name").value,
-            last_name: document.getElementById("last_name").value,
-            password: document.getElementById("password").value,
-          };
-      
-          fetch(`${API_BASE_URL}/company/api/User/`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(data),
-          })
-            .then((res) => {
-              if (!res.ok) throw new Error("❌ Failed to register user");
-              return res.json();
-            })
-            .then(() => {
-              alert("✅ User registered successfully!");
-              document.getElementById("userForm").reset();
-              loadUsers(); // reload list
-            })
-            .catch((err) => alert(err.message));
-        });
-      
-        // ✅ READ USERS (LIST)
-        function loadUsers() {
-          fetch(`${API_BASE_URL}/company/api/User/`, {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-            .then((res) => {
-              if (!res.ok) throw new Error("❌ Failed to fetch users");
-              return res.json();
-            })
-            .then((users) => {
-              const container = document.getElementById("userListContainer");
-              container.innerHTML = "";
-      
-              users.forEach((user) => {
-                const userHtml = `
-                  <div class="col-md-4">
-                    <div class="user-sec">
-                      <div class="row">
-                        <div class="col-md-4">
-                          <div class="img-fluid user_ico">
-                            <h4><i class="bi bi-person-circle"></i></h4>
-                          </div>
-                        </div>
-                        <div class="col-md-8">
-                          <h3>${user.first_name} ${user.last_name}</h3>
-                          <h2>${user.username}</h2>
-                          <h2>${user.email}</h2>
-                          <button class="btn btn-warning btn-sm" onclick="editUser(${user.id})">✏ Edit</button>
-                          <button class="btn btn-danger btn-sm" onclick="deleteUser(${user.id})">🗑 Delete</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>`;
-                container.innerHTML += userHtml;
-              });
-            })
-            .catch((err) => console.error(err.message));
+        document.addEventListener('DOMContentLoaded', function () {
+    const chevron = document.getElementById('toggleChevron');
+    const content = document.getElementById('expandContent');
+
+    chevron.addEventListener('click', () => {
+        if (content.style.display === 'none') {
+            content.style.display = 'block';
+            chevron.classList.remove('bi-chevron-down');
+            chevron.classList.add('bi-chevron-up');
+        } else {
+            content.style.display = 'none';
+            chevron.classList.remove('bi-chevron-up');
+            chevron.classList.add('bi-chevron-down');
         }
-      
-        // ✅ EDIT USER (open modal & populate form)
-        function editUser(userId) {
-          fetch(`${API_BASE_URL}/company/api/User/${userId}/`, {
-            method: "GET",
-            headers: { Authorization: `Bearer ${token}` },
-          })
-            .then((res) => res.json())
-            .then((user) => {
-              document.getElementById("edit_user_id").value = user.id;
-              document.getElementById("edit_username").value = user.username;
-              document.getElementById("edit_email").value = user.email;
-              document.getElementById("edit_first_name").value = user.first_name;
-              document.getElementById("edit_last_name").value = user.last_name;
-              document.getElementById("edit_password").value = "";
-      
-              $("#myModalEdit").modal("show");
-            })
-            .catch(() => alert("❌ Failed to load user details"));
-        }
-      
-        // ✅ UPDATE USER (from modal)
-        document.getElementById("editUserForm").addEventListener("submit", function (e) {
-          e.preventDefault();
-      
-          const userId = document.getElementById("edit_user_id").value;
-          const updatedData = {
-            username: document.getElementById("edit_username").value,
-            email: document.getElementById("edit_email").value,
-            first_name: document.getElementById("edit_first_name").value,
-            last_name: document.getElementById("edit_last_name").value,
-          };
-      
-          const password = document.getElementById("edit_password").value;
-          if (password.trim() !== "") updatedData.password = password;
-      
-          fetch(`${API_BASE_URL}/company/api/User/${userId}/`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(updatedData),
-          })
-            .then((res) => {
-              if (!res.ok) throw new Error("❌ Update failed");
-              return res.json();
-            })
-            .then(() => {
-              alert("✅ User updated successfully!");
-              $("#myModalEdit").modal("hide");
-              loadUsers();
-            })
-            .catch(() => alert("❌ Error updating user"));
-        });
-      
-        // ✅ DELETE USER
-        function deleteUser(userId) {
-          if (!confirm("⚠ Are you sure you want to delete this user?")) return;
-      
-          fetch(`${API_BASE_URL}/company/api/User/${userId}/`, {
-            method: "DELETE",
-            headers: { Authorization: `Bearer ${token}` },
-          })
-            .then((res) => {
-              if (!res.ok) throw new Error("❌ Failed to delete user");
-              alert("🗑 User deleted successfully!");
-              loadUsers();
-            })
-            .catch(() => alert("❌ Error deleting user"));
-        }
-      
-        // ✅ Load user list on page load
-        document.addEventListener("DOMContentLoaded", loadUsers);
+    });
+});
+
       </script>
-      
+
+<script>
+    // ✅ API base URL (local or live)
+    const API_BASE_URL =
+      window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+        ? "http://127.0.0.1:8001"
+        : "http://167.86.74.89";
+  
+    const token = localStorage.getItem("access_token");
+  
+    // -----------------------------
+    // CREATE Category
+    // -----------------------------
+    document.getElementById("userForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      const data = {
+        name: document.getElementById("name").value,
+      };
+  
+      fetch(`${API_BASE_URL}/employee/category/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("❌ Failed to register category");
+          return res.json();
+        })
+        .then(() => {
+          alert("✅ Category registered successfully!");
+          document.getElementById("userForm").reset();
+          loadCategories();
+        })
+        .catch((err) => alert(err.message));
+    });
+  
+    // -----------------------------
+    // READ Categories
+    // -----------------------------
+    function loadCategories() {
+      fetch(`${API_BASE_URL}/employee/category/`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("❌ Failed to fetch categories");
+          return res.json();
+        })
+        .then((categories) => {
+          const tableBody = document.getElementById("rolesTableBody");
+          tableBody.innerHTML = "";
+  
+          categories.forEach((category, index) => {
+            const row = `
+              <tr>
+                <td>${index + 1}</td>
+                <td>${category.name || "N/A"}</td>
+                <td>
+                  <button class="btn btn-warning btn-sm" onclick="editCategory(${category.id})">✏ Edit</button>
+                  <button class="btn btn-danger btn-sm" onclick="deleteCategory(${category.id})">🗑 Delete</button>
+                </td>
+              </tr>
+            `;
+            tableBody.insertAdjacentHTML("beforeend", row);
+          });
+        })
+        .catch((err) => console.error(err.message));
+    }
+  
+    // -----------------------------
+    // EDIT Category (Load into Modal)
+    // -----------------------------
+    function editCategory(categoryId) {
+      fetch(`${API_BASE_URL}/employee/category/${categoryId}/`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((res) => res.json())
+        .then((category) => {
+          document.getElementById("edit_category_id").value = category.id;
+          document.getElementById("edit_category_name").value = category.name;
+  
+          $("#editCategoryModal").modal("show");
+        })
+        .catch(() => alert("❌ Failed to load category details"));
+    }
+  
+    // -----------------------------
+    // UPDATE Category
+    // -----------------------------
+    document.getElementById("editCategoryForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      const categoryId = document.getElementById("edit_category_id").value;
+      const updatedData = {
+        name: document.getElementById("edit_category_name").value,
+      };
+  
+      fetch(`${API_BASE_URL}/employee/category/${categoryId}/`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(updatedData),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("❌ Update failed");
+          return res.json();
+        })
+        .then(() => {
+          alert("✅ Category updated successfully!");
+          $("#editCategoryModal").modal("hide");
+          loadCategories();
+        })
+        .catch(() => alert("❌ Error updating category"));
+    });
+  
+    // -----------------------------
+    // DELETE Category
+    // -----------------------------
+    function deleteCategory(categoryId) {
+      if (!confirm("⚠ Are you sure you want to delete this category?")) return;
+  
+      fetch(`${API_BASE_URL}/employee/category/${categoryId}/`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error("❌ Failed to delete category");
+          alert("🗑 Category deleted successfully!");
+          loadCategories();
+        })
+        .catch(() => alert("❌ Error deleting category"));
+    }
+  
+    // ✅ Load categories on page ready
+    document.addEventListener("DOMContentLoaded", loadCategories);
+  </script>
+  
+  
+    
 
 	<script src="script.js"></script>
 </body>

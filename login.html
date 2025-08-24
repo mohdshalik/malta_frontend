@@ -17,13 +17,18 @@
     </div>
 
     <script>
+      // Decide API base URL based on hostname (localhost vs live server)
+      const API_BASE_URL = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+        ? "http://127.0.0.1:8001"
+        : "http://167.86.74.89";
+    
       document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
-
+    
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-
-        fetch('http://127.0.0.1:8001/api/token/', {
+    
+        fetch(`${API_BASE_URL}/api/token/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -44,5 +49,6 @@
         });
       });
     </script>
+    
   </body>
 </html>

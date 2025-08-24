@@ -48,7 +48,14 @@
 					<span class="text">Designation Master</span>
 				</a>
 			</li>
+			<li >
+				<a href="category.html">
+				  <i class='bx bxs-group bx-sm' ></i>
+				  <span class="text">Category Master</span>
+				</a>
+			  </li>
 			<li>
+			
 				<a href="employee-master.html">
 					<i class='bx bxs-message-dots bx-sm' ></i>
 					<span class="text">Employee</span>
@@ -102,18 +109,17 @@
 			</li>
 		</ul>
 		<ul class="side-menu bottom">
-			<li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog bx-sm bx-spin-hover' ></i>
 					<span class="text">Settings</span>
 				</a>
-			</li>
-			<li>
-				<a href="#" class="logout" id="logoutBtn
-				" >
+			</li> -->
+			<li id="logoutBtn"> <a>
+				
 					<i class='bx bx-power-off bx-sm bx-burst-hover' ></i>
-					<span class="text">Logout</span>
-				</a>
+					<span class="text">Logout</span> </a>
+			
 			</li>
 		</ul>
 	</section>
@@ -170,7 +176,7 @@
         <ul>
             <li><a href="#">My Profile</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="#">Log Out</a></li>
+            <li id="logoutBtn">Log Out</li>
         </ul>
     </div>
 </nav>
@@ -200,119 +206,130 @@
 
 			<ul class="box-info">
 				<li>
-					<i class='bx bxs-calendar-check' ></i>
-					<span class="text">
-						<h3>2</h3>
-						<p>Company</p>
-					</span>
+				  <i class='bx bxs-calendar-check'></i>
+				  <span class="text">
+					<h3 id="companyCount">0</h3>
+					<p>Company</p>
+				  </span>
 				</li>
 				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<h3>10</h3>
-						<p>Department</p>
-					</span>
+				  <i class='bx bxs-group'></i>
+				  <span class="text">
+					<h3 id="departmentCount">0</h3>
+					<p>Department</p>
+				  </span>
 				</li>
 				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<h3>200</h3>
-						<p>Employees</p>
-					</span>
+				  <i class='bx bxs-group'></i>
+				  <span class="text">
+					<h3 id="employeeCount">0</h3>
+					<p>Employees</p>
+				  </span>
 				</li>
-			</ul>
+			  </ul>
+			  
+			  <script>
+				// ✅ Decide API base URL
+				const API_BASE_URL = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+				  ? "http://127.0.0.1:8001"
+				  : "http://167.86.74.89";
+			  
+				const token = localStorage.getItem("access_token");
+			  
+				// Helper function to fetch and set count
+				function fetchCount(endpoint, elementId) {
+				  fetch(`${API_BASE_URL}${endpoint}`, {
+					method: "GET",
+					headers: {
+					  "Authorization": `Bearer ${token}`,
+					  "Content-Type": "application/json"
+					}
+				  })
+				  .then(res => {
+					if (!res.ok) throw new Error("Failed to fetch " + endpoint);
+					return res.json();
+				  })
+				  .then(data => {
+					// If DRF pagination → use data.count, else use data.length
+					const count = data.count !== undefined ? data.count : data.length;
+					document.getElementById(elementId).textContent = count;
+				  })
+				  .catch(err => console.error("Error fetching " + endpoint, err));
+				}
+			  
+				// Fetch Users and display in table
+				function fetchUsers() {
+				  fetch(`${API_BASE_URL}/company/api/User/`, {
+					method: "GET",
+					headers: {
+					  "Authorization": `Bearer ${token}`,
+					  "Content-Type": "application/json"
+					}
+				  })
+				  .then(res => {
+					if (!res.ok) throw new Error("Failed to fetch users");
+					return res.json();
+				  })
+				  .then(data => {
+					const users = data.results ? data.results : data; // ✅ handle DRF pagination
+					const tbody = document.querySelector("#usersTableBody");
+					tbody.innerHTML = ""; // clear old rows
+			  
+					users.forEach(user => {
+					  const tr = document.createElement("tr");
+					  tr.innerHTML = `
+						<td>
+						  <img src="https://placehold.co/100x100/png" alt="User">
+						  <p>${user.username || user.name || "N/A"}</p>
+						</td>
+					  `;
+					  tbody.appendChild(tr);
+					});
+				  })
+				  .catch(err => console.error("Error fetching users:", err));
+				}
+			  
+				// Call APIs after page load
+				document.addEventListener("DOMContentLoaded", function () {
+				  fetchCount("/company/api/company/", "companyCount");
+				  fetchCount("/company/api/department/", "departmentCount");
+				  fetchCount("/employee/employee/", "employeeCount");
+				  fetchCount("/company/api/User/", "userCount");
+				  fetchUsers();
+				});
+			  </script>
+			  
+			  
 
 
-			<div class="table-data">
+			  <div class="table-data">
 				<div class="order">
-					<div class="head">
-						<h3>Users</h3>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<img src="https://placehold.co/600x400/png">
-									<p>Micheal John</p>
-								</td>
-								<td>18-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="https://placehold.co/600x400/png">
-									<p>Ryan Doe</p>
-								</td>
-								<td>01-06-2022</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="https://placehold.co/600x400/png">
-									<p>Tarry White</p>
-								</td>
-								<td>14-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="https://placehold.co/600x400/png">
-									<p>Selma</p>
-								</td>
-								<td>01-02-2023</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="https://placehold.co/600x400/png">
-									<p>Andreas Doe</p>
-								</td>
-								<td>31-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-						</tbody>
-					</table>
+				  <div class="head">
+					<h3>Users</h3>
+					<i class='bx bx-search'></i>
+					<i class='bx bx-filter'></i>
+				  </div>
+				  <table>
+					<thead>
+					  <tr>
+						<th>User</th>
+					  </tr>
+					</thead>
+					<tbody id="usersTableBody">
+					  <!-- Users will be injected here -->
+					</tbody>
+				  </table>
 				</div>
+			  
 				<div class="todo">
-					<div class="head">
-						<h3>Company Policy</h3>
-						<i class='bx bx-plus icon'></i>
-						<i class='bx bx-filter' ></i>
-	
-					</div>
-					<!-- <ul class="todo-list">
-						<li class="completed">
-							<p>Check Inventory</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Manage Delivery Team</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Contact Selma: Confirm Delivery</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>Update Shop Catalogue</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>Count Profit Analytics</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-					</ul> -->
+				  <div class="head">
+					<h3>Company Policy</h3>
+					<i class='bx bx-plus icon'></i>
+					<i class='bx bx-filter'></i>
+				  </div>
 				</div>
-			</div>
+			  </div>
+			  
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -321,20 +338,22 @@
 
 
 	<script>
-        document.getElementById('logoutBtn').addEventListener('click', function (e) {
-          e.preventDefault();
-      
-          // Clear token or any other user session data
-          localStorage.removeItem('access_token');
-      
-          // Optional: Clear any other session keys
-          // localStorage.clear();
-      
-          // Redirect to login page
-          window.location.href = 'login.html';  // Update this path if needed
-        });
-      </script>
-    
+		document.getElementById('logoutBtn').addEventListener('click', function (e) {
+		  e.preventDefault();
+	  
+		  // Remove only specific session data
+		  localStorage.removeItem('access_token');
+		  localStorage.removeItem('refresh_token'); // if you use one
+		  localStorage.removeItem('user_id');       // if stored
+	  
+		  // OR clear everything (if you don’t store other important data)
+		  // localStorage.clear();
+	  
+		  // Redirect to login page
+		  window.location.href = 'login.html';  
+		});
+	  </script>
+	  
 
 	<script src="script.js"></script>
 </body>

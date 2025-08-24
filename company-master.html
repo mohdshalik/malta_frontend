@@ -55,7 +55,14 @@
 					<span class="text">Designation Master</span>
 				</a>
 			</li>
+      <li >
+        <a href="category.html">
+          <i class='bx bxs-group bx-sm' ></i>
+          <span class="text">Category Master</span>
+        </a>
+      </li>
 			<li>
+       
 				<a href="employee-master.html">
 					<i class='bx bxs-message-dots bx-sm' ></i>
 					<span class="text">Employee</span>
@@ -107,14 +114,14 @@
 			</li>
 		</ul>
 		<ul class="side-menu bottom">
-			<li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog bx-sm bx-spin-hover' ></i>
 					<span class="text">Settings</span>
 				</a>
-			</li>
-			<li>
-				<a href="#" class="logout" id="logoutBtn">
+			</li> -->
+			<li id="logoutBtn">
+				<a >
 					<i class='bx bx-power-off bx-sm bx-burst-hover' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -123,6 +130,23 @@
 	</section>
 	<!-- SIDEBAR -->
 
+  <script>
+    document.getElementById('logoutBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+  
+      // Remove only specific session data
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token'); // if you use one
+      localStorage.removeItem('user_id');       // if stored
+  
+      // OR clear everything (if you don’t store other important data)
+      // localStorage.clear();
+  
+      // Redirect to login page
+      window.location.href = 'login.html';  
+    });
+  </script>
+  
 
 
 	<!-- CONTENT -->
@@ -167,7 +191,7 @@
         <ul>
             <li><a href="#">My Profile</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="#">Log Out</a></li>
+            <li id="logoutBtn"><a>Log Out</a></li>
         </ul>
     </div>
 </nav>
@@ -298,6 +322,62 @@
         </div>
       </div>
 
+
+
+      <div class="modal fade" id="editCompanyModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+      
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-10">
+                  <h4 class="modal-title">Edit Company</h4><hr>
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+              </div>
+      
+              <form id="editCompanyForm">
+                <input type="hidden" id="edit_company_id" />
+      
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" id="edit_name" class="form-control" required />
+                </div>
+      
+                <div class="form-group">
+                  <label>Address</label>
+                  <input type="text" id="edit_address" class="form-control" />
+                </div>
+      
+                <div class="form-group">
+                  <label>Tax ID</label>
+                  <input type="text" id="edit_tax_id" class="form-control" />
+                </div>
+      
+                <div class="form-group">
+                  <label>Registration Number</label>
+                  <input type="text" id="edit_registration_number" class="form-control" />
+                </div>
+      
+                <div class="form-group">
+                  <label>Contact Email</label>
+                  <input type="email" id="edit_contact_email" class="form-control" />
+                </div>
+      
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input type="text" id="edit_phone_number" class="form-control" />
+                </div>
+      
+                <button type="submit" class="btn btn-success">💾 Save Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       
       <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -319,46 +399,191 @@
 
       </script>
 
-      <script>
-        document.getElementById('userForm').addEventListener('submit', function (e) {
-          e.preventDefault(); // Prevent default form submission
-      
-          const token = localStorage.getItem('access_token'); // If your API requires authentication
-      
-          const data = {
-            name: document.getElementById('name').value,
-            address: document.getElementById('address').value,
-            tax_id: document.getElementById('tax_id').value,
-            registration_number: document.getElementById('registration_number').value,
-            contact_email: document.getElementById('contact_email').value,
-            phone_number: document.getElementById('phone_number').value,
+<script>
+  // ✅ Dynamic API Base URL
+  const API_BASE_URL =
+    window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+      ? "http://127.0.0.1:8001"
+      : "http://167.86.74.89";
 
-          };
-      
-          fetch('http://127.0.0.1:8001/company/api/company/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`  // Remove this line if your API doesn't require login
-            },
-            body: JSON.stringify(data)
-          })
-          .then(response => {
-            if (!response.ok) throw new Error("Failed to register user.");
-            return response.json();
-          })
-          .then(result => {
-            alert('Company registered successfully!');
-            document.getElementById('userForm').reset();
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('Error registering user.');
+  const token = localStorage.getItem("access_token");
+
+  // ✅ CREATE COMPANY
+  document.getElementById("userForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const data = {
+      name: document.getElementById("name").value,
+      address: document.getElementById("address").value,
+      tax_id: document.getElementById("tax_id").value,
+      registration_number: document.getElementById("registration_number").value,
+      contact_email: document.getElementById("contact_email").value,
+      phone_number: document.getElementById("phone_number").value,
+    };
+
+    fetch(`${API_BASE_URL}/company/api/company/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("❌ Failed to register company");
+        return res.json();
+      })
+      .then(() => {
+        alert("✅ Company registered successfully!");
+        document.getElementById("userForm").reset();
+        loadCompanies();
+      })
+      .catch((err) => alert(err.message));
+  });
+
+  // ✅ READ COMPANIES
+  function loadCompanies() {
+    fetch(`${API_BASE_URL}/company/api/company/`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("❌ Failed to fetch companies");
+        return res.json();
+      })
+      .then((companies) => {
+        const container = document.getElementById("companyContainer");
+        container.innerHTML = "";
+
+        companies.forEach((company, index) => {
+          const companyHtml = `
+            <div class="com-det mb-3">
+              <div class="row">
+                <div class="col-md-8">
+                  <h2 style="text-align: left;">${company.name || "Company Name"}</h2>
+                </div>
+                <div class="col-md-4 text-right">
+                  <button class="btn btn-warning btn-sm" onclick="editCompany(${company.id})">✏ Edit</button>
+                  <button class="btn btn-danger btn-sm" onclick="deleteCompany(${company.id})">🗑 Delete</button>
+                  <i id="toggleChevron-${index}" class="bi bi-chevron-down" style="cursor: pointer;"></i>
+                </div>
+              </div>
+
+              <div id="expandContent-${index}" style="display: none; margin-top: 10px;">
+                <div class="company-cot">
+                  <div class="row">
+                    <div class="col-md-4"><h4>Address</h4><h6>${company.address || "N/A"}</h6></div>
+                    <div class="col-md-4"><h4>Registration Number</h4><h6>${company.registration_number || "N/A"}</h6></div>
+                    <div class="col-md-4"><h4>Contact Email</h4><h6>${company.contact_email || "N/A"}</h6></div>
+                    <div class="col-md-4"><h4>Contact Number</h4><h6>${company.phone_number || "N/A"}</h6></div>
+                    <div class="col-md-4"><h4>Tax ID</h4><h6>${company.tax_id || "N/A"}</h6></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+
+          container.insertAdjacentHTML("beforeend", companyHtml);
+
+          // Toggle expand/collapse
+          const chevron = document.getElementById(`toggleChevron-${index}`);
+          const content = document.getElementById(`expandContent-${index}`);
+          chevron.addEventListener("click", () => {
+            const isHidden = content.style.display === "none";
+            content.style.display = isHidden ? "block" : "none";
+            chevron.classList.toggle("bi-chevron-down", !isHidden);
+            chevron.classList.toggle("bi-chevron-up", isHidden);
           });
         });
-      </script>
-    
-    <script>
+      })
+      .catch((err) => console.error(err.message));
+  }
+
+  // ✅ EDIT COMPANY (load into modal)
+  function editCompany(companyId) {
+    fetch(`${API_BASE_URL}/company/api/company/${companyId}/`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((company) => {
+        document.getElementById("edit_company_id").value = company.id;
+        document.getElementById("edit_name").value = company.name;
+        document.getElementById("edit_address").value = company.address;
+        document.getElementById("edit_tax_id").value = company.tax_id;
+        document.getElementById("edit_registration_number").value = company.registration_number;
+        document.getElementById("edit_contact_email").value = company.contact_email;
+        document.getElementById("edit_phone_number").value = company.phone_number;
+
+        $("#editCompanyModal").modal("show");
+      })
+      .catch(() => alert("❌ Failed to load company details"));
+  }
+
+  // ✅ UPDATE COMPANY
+  document.getElementById("editCompanyForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const companyId = document.getElementById("edit_company_id").value;
+    const updatedData = {
+      name: document.getElementById("edit_name").value,
+      address: document.getElementById("edit_address").value,
+      tax_id: document.getElementById("edit_tax_id").value,
+      registration_number: document.getElementById("edit_registration_number").value,
+      contact_email: document.getElementById("edit_contact_email").value,
+      phone_number: document.getElementById("edit_phone_number").value,
+    };
+
+    fetch(`${API_BASE_URL}/company/api/company/${companyId}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("❌ Update failed");
+        return res.json();
+      })
+      .then(() => {
+        alert("✅ Company updated successfully!");
+        $("#editCompanyModal").modal("hide");
+        loadCompanies();
+      })
+      .catch(() => alert("❌ Error updating company"));
+  });
+
+  // ✅ DELETE COMPANY
+  function deleteCompany(companyId) {
+    if (!confirm("⚠ Are you sure you want to delete this company?")) return;
+
+    fetch(`${API_BASE_URL}/company/api/company/${companyId}/`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("❌ Failed to delete company");
+        alert("🗑 Company deleted successfully!");
+        loadCompanies();
+      })
+      .catch(() => alert("❌ Error deleting company"));
+  }
+
+  // ✅ Load companies on page ready
+  document.addEventListener("DOMContentLoaded", loadCompanies);
+</script>
+
+
+    <!-- <script>
+
+
+
+
+
         document.addEventListener("DOMContentLoaded", function () {
           const token = localStorage.getItem('access_token');
       
@@ -438,7 +663,7 @@
             console.error("Error fetching company details:", error);
           });
         });
-      </script>
+      </script> -->
 
     
 
