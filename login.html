@@ -27,8 +27,8 @@
     
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-    
-        fetch(`${API_BASE_URL}/api/token/`, {
+
+        fetch('http://167.86.74.89/api/token/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

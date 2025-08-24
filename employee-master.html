@@ -48,6 +48,7 @@
 				</a>
 			</li>
 
+
       <li>
 				<a href="role.html">
 					<i class='bx bxs-group bx-sm' ></i>
@@ -55,6 +56,12 @@
 				</a>
 			</li>
 
+      <li >
+        <a href="category.html">
+          <i class='bx bxs-group bx-sm' ></i>
+          <span class="text">Category Master</span>
+        </a>
+      </li>
       <li >
         <a href="category.html">
           <i class='bx bxs-group bx-sm' ></i>
@@ -114,10 +121,12 @@
 		</ul>
 		<ul class="side-menu bottom">
 			<!-- <li>
+			<!-- <li>
 				<a href="#">
 					<i class='bx bxs-cog bx-sm bx-spin-hover' ></i>
 					<span class="text">Settings</span>
 				</a>
+			</li> -->
 			</li> -->
 			<li>
 				<a href="#" class="logout">
@@ -237,7 +246,10 @@
             <th>Fss status</th>
             <th>Employee Type</th>
 
+            <th>Employee Type</th>
+
             <th>Company</th>
+            <th>Category</th>
             <th>Category</th>
             <th>Delete</th>
 
@@ -366,6 +378,16 @@
                         </select>
                       </div>
         
+                      <div class="col-md-6">
+                        <label>Select Employee Type </label>
+                        <select class="form-control" id="type_of_employment" required>
+                          <option value="">-- Select Employee Type --</option>
+                          <option value="part_time">Part Time</option>
+                          <option value="full_time">Full Time</option>
+                         
+                        </select>
+                      </div>
+        
 
 
                       
@@ -396,6 +418,16 @@
                           </select>
                         </div>
                       </div>
+
+                      <div class="col-md-6">
+                        <label>Select Category</label>
+                        <div class="custom-sel">
+                          <select class="form-control" id="category">
+                            <option value="">-- Select category --</option>
+                          </select>
+                        </div>
+                      </div>
+
 
                       <div class="col-md-6">
                         <label>Select Category</label>
